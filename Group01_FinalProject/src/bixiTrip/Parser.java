@@ -1,4 +1,4 @@
-package bixiBike;
+package bixiTrip;
 
 public class Parser {
 
