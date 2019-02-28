@@ -1,9 +1,9 @@
 SFWRENG 2XB3
 Team Members:
-Matthew Braden - STUDENT_NO - Researcher 
+Matthew Braden - 400109876 - Researcher 
 Jonathan Janzen - 400140652 - Programming Lead 1
 Harsh Mahajan - 400109832 - Logistics & Communications Lead
-Meghan Mazer - STUDENT_NO - Presentations Lead
+Meghan Mazer - 400114100 - Presentations Lead
 Caleb Mech - 400120855 - Programming Lead 2
 
 The work submitted by this group is our own work alone. Any libraries or
