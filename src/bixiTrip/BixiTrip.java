@@ -1,5 +1,12 @@
 package bixiTrip;
 
+/** 
+ * 
+ * 
+ * @author ?????
+ *
+ */
+
 public class BixiTrip {
 
 	public static void main(String args[]) {
