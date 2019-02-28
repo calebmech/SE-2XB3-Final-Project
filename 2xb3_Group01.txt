@@ -1,10 +1,10 @@
 SFWRENG 2XB3
 Team Members:
-Matthew Braden - STUDENT_NO - TEAM ROLE
-Jonathan Janzen - 400140652 - TEAM ROLE
-Harsh Mahajan - STUDENT_NO - TEAM ROLE
-Meghan Mazer - STUDENT_NO - TEAM ROLE
-Caleb Mech - 400120855 - TEAM ROLE
+Matthew Braden - STUDENT_NO - Researcher 
+Jonathan Janzen - 400140652 - Programming Lead 1
+Harsh Mahajan - 400109832 - Logistics & Communications Lead
+Meghan Mazer - STUDENT_NO - Presentations Lead
+Caleb Mech - 400120855 - Programming Lead 2
 
 The work submitted by this group is our own work alone. Any libraries or
 code taken from other sources has been cited appropriately.
