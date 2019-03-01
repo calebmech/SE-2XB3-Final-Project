@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class Stations {
 
-	private static Stations single_instance = null;
+	private static Stations instance = null;
 	private boolean isSorted = true;
 	private ArrayList<Station> stations = new ArrayList<Station>();
 
@@ -24,9 +24,9 @@ public class Stations {
 	 *         exists or not.
 	 */
 	public static Stations Stations() {
-		if (single_instance == null)
-			single_instance = new Stations();
-		return single_instance;
+		if (instance == null)
+			instance = new Stations();
+		return instance;
 	}
 	
 	Station getStation(Integer code)
@@ -63,7 +63,7 @@ public class Stations {
 	
 	//TEMPORARY TESTING FUNCTION
 	public static void main(String args[]) {
-		Stations stations = Stations.Stations();
+		Stations stations = new Stations();
 		Station test = new Station(4561, "Test Station 1", null);
 		Station test2 = new Station(3920, "Test Station 2", null);
 		stations.addStation(test);
