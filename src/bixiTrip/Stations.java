@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Stations {
 
 	private static Stations single_instance = null;
-
+	private boolean isSorted = true;
 	private ArrayList<Station> stations = new ArrayList<Station>();
 
 	/**
@@ -31,6 +31,9 @@ public class Stations {
 	
 	Station getStation(Integer code)
 	{
+		if (!isSorted) {
+			//SORT
+		}
 		return null;
 	}
 	
@@ -40,22 +43,9 @@ public class Stations {
 	 * @param station A Station object to be added to the Stations data type.
 	 */
 	void addStation(Station station) {
-		//add first station to object
-		if (stations.size() == 0) {
-			stations.add(station);
-		}
-		else {
-			//insert new station in sorted order
-			int i = 0;
-			while (i < stations.size()) {
-				if (stations.get(i).compareTo(station) > 0) {
-					stations.add(i, station);
-					break;
-				}
-				//increment i
-				i++;
-			}
-		}
+		//add station to object
+		stations.add(station);
+		isSorted = false;
 	}
 
 	/**
@@ -64,6 +54,10 @@ public class Stations {
 	 * @return Returns ArrayList<Stations> of stations stored.
 	 */
 	ArrayList<Station> getStations() {
+		//sort list if not sorted
+		if (!isSorted) {
+			//SORT
+		}
 		return stations;
 	}
 	
