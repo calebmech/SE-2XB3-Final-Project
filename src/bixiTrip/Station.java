@@ -7,7 +7,7 @@ package bixiTrip;
  *
  */
 
-public class Station {
+public class Station implements Comparable<Station> {
 	private final Integer code;
 	private final String name;
 	private final Coord coords;
@@ -50,6 +50,17 @@ public class Station {
 	 */
 	Coord getCoords() {
 		return this.coords;
+	}
+
+	/**
+	 * A function to implement the Comparable interface to the Station data type.
+	 * 
+	 * @param that A Station object to be compared to the local object.
+	 * @return Returns an integer 1 if the object's code is greater than that, -1 if
+	 *         it is less and 0 if they are the same.
+	 */
+	public int compareTo(Station that) {
+		return (this.code).compareTo(that.getCode());
 	}
 
 }
