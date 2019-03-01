@@ -30,7 +30,7 @@ public class Station {
 	 * 
 	 * @return Returns station's code as an integer.
 	 */
-	private Integer getCode() {
+	Integer getCode() {
 		return this.code;
 	}
 
@@ -39,7 +39,7 @@ public class Station {
 	 * 
 	 * @return Returns station's name as a string.
 	 */
-	private String getName() {
+	String getName() {
 		return this.name;
 	}
 
@@ -48,7 +48,7 @@ public class Station {
 	 * 
 	 * @return Returns station's coordinates as type coord.
 	 */
-	private Coord getCoords() {
+	Coord getCoords() {
 		return this.coords;
 	}
 
