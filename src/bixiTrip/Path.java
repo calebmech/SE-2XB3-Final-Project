@@ -5,19 +5,18 @@ public class Path extends PastTrip {
 	private int count;
 
 	public Path(PastTrip _trip) {
-		stationStart = _trip.getStationStart();
-		stationEnd = _trip.getStationEnd();
-		duration = _trip.getDuration();
+		super(_trip.getStationStart(), _trip.getStationEnd(), 0);
+		this.duration = _trip.getDuration();
 		count = 1;
 	}
 
-	void addPastTrip(PastTrip _trip) {
-		duration = (duration * count + _trip.getDuration()) / (count + 1);
+	public void addPastTrip(PastTrip trip) {
+		duration = (duration * count + trip.getDuration()) / (count + 1);
 		count++;
 	}
 
 	@Override
-	int getDuration() {
+	public int getDuration() {
 		return Math.round(duration);
 	}
 }

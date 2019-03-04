@@ -7,8 +7,8 @@ package bixiTrip;
  * @author Matthew Braden
  */
 public class PastTrip implements Comparable<PastTrip> {
-    private int stationStart;
-    private int stationEnd;
+    protected int stationStart;
+    protected int stationEnd;
     private int duration;
 
     /**
