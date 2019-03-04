@@ -1,5 +1,10 @@
 package algs;
 
+import java.util.ArrayList;
+
+import bixiTrip.Station;
+import bixiTrip.Stations;
+
 /**
  * Class containing code for mergesort. Code taken from Sedgewick & Wayne's
  * "Algorithms: Fourth Edition". Each function has been cited individually from
@@ -9,9 +14,9 @@ package algs;
  *
  */
 
-public class Mergesort {
+public class StationsMergesort {
 
-	private static Comparable[] aux;
+	private static Station[] aux;
 
 	/**
 	 * Code for less taken from page 245 of "Algorithms: Fourth Edition" by
@@ -34,20 +39,20 @@ public class Mergesort {
 	 * @param mid Mid index position.
 	 * @param hi  High index position.
 	 */
-	private static void merge(Comparable[] a, int lo, int mid, int hi) {
+	private static void merge(ArrayList<Station> a, int lo, int mid, int hi) {
 		int i = lo, j = mid + 1;
 
 		for (int k = lo; k <= hi; k++)
-			aux[k] = a[k];
+			aux[k] = a.get(k);
 		for (int k = lo; k <= hi; k++)
 			if (i > mid)
-				a[k] = aux[j++];
+				a.set(k, aux[j++]);
 			else if (j > hi)
-				a[k] = aux[i++];
+				a.set(k, aux[i++]);
 			else if (less(aux[j], aux[i]))
-				a[k] = aux[j++];
+				a.set(k, aux[j++]);
 			else
-				a[k] = aux[i++];
+				a.set(k, aux[i++]);
 	}
 
 	/**
@@ -56,9 +61,9 @@ public class Mergesort {
 	 * 
 	 * @param a An array of a Comparable type.
 	 */
-	public static void sort(Comparable[] a) {
-		int n = a.length;
-		aux = new Comparable[n];
+	public static void sort(ArrayList<Station> a) {
+		int n = a.size();
+		aux = new Station[n];
 		for (int len = 1; len < n; len *= 2)
 			for (int lo = 0; lo < n - len; lo += len + len)
 				merge(a, lo, lo + len - 1, Math.min(lo + len + len - 1, n - 1));

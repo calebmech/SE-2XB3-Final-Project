@@ -34,11 +34,7 @@ public class Stations {
 	 * Private method to sort the Stations stored in the object.
 	 */
 	private void sortStations() {
-		// convert to an array
-		Station[] stationArray = stations.toArray(new Station[stations.size()]);
-		algs.Mergesort.sort(stationArray);
-		// convert back to an ArrayList
-		stations = new ArrayList<Station>(Arrays.asList(stationArray));
+		algs.StationsMergesort.sort(stations);
 		isSorted = true;
 	}
 
