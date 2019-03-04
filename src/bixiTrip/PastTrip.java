@@ -6,7 +6,7 @@ package bixiTrip;
  * 
  * @author Matthew Braden
  */
-public class PastTrip implements Comparable {
+public class PastTrip implements Comparable<PastTrip> {
     private int stationStart;
     private int stationEnd;
     private int duration;
@@ -61,6 +61,4 @@ public class PastTrip implements Comparable {
     public int compareTo(PastTrip trip){
         return  Integer.compare(this.getDuration(), trip.getDuration());
     }
-
-
 }

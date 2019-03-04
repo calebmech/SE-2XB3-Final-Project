@@ -64,8 +64,8 @@ public class Stations {
 	//TEMPORARY TESTING FUNCTION
 	public static void main(String args[]) {
 		Stations stations = new Stations();
-		Station test = new Station(4561, "Test Station 1", null);
-		Station test2 = new Station(3920, "Test Station 2", null);
+		Station test = new Station(4561, "Test Station 1", new Coord(52.4348, -23.674));
+		Station test2 = new Station(3920, "Test Station 2", new Coord(20.6748, -10.4837));
 		stations.addStation(test);
 		stations.addStation(test2);
 		ArrayList<Station> stationsArray = stations.getStations();
