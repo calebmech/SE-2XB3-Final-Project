@@ -59,6 +59,11 @@ public class PastTrip implements Comparable<PastTrip> {
      */
     @Override
     public int compareTo(PastTrip trip){
-        return  Integer.compare(this.getDuration(), trip.getDuration());
+        int start = Integer.compare(this.getStationStart(), trip.getStationStart());
+        if (start == 0) {
+        	return Integer.compare(this.getStationEnd(), trip.getStationEnd());
+        } else {
+        	return start;
+        }
     }
 }
