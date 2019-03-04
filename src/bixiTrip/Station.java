@@ -59,6 +59,7 @@ public class Station implements Comparable<Station> {
 	 * @return Returns an integer 1 if the object's code is greater than that, -1 if
 	 *         it is less and 0 if they are the same.
 	 */
+	@Override
 	public int compareTo(Station that) {
 		return (this.code).compareTo(that.getCode());
 	}
