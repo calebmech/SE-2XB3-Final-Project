@@ -53,8 +53,7 @@ public class Stations {
 			sortStations();
 		}
 		// convert to an array to be searched
-		Station[] stationArray = stations.toArray(new Station[stations.size()]);
-		int index = algs.BinarySearch.stationSearch(stationArray, code);
+		int index = algs.BinarySearch.stationSearch(stations, code);
 		try {
 			return stations.get(index);
 		} catch (ArrayIndexOutOfBoundsException e) {
