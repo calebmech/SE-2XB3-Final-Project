@@ -3,7 +3,6 @@ package algs;
 import java.util.ArrayList;
 
 import bixiTrip.Station;
-import bixiTrip.Stations;
 
 /**
  * Class containing code for mergesort. Code taken from Sedgewick & Wayne's
@@ -31,10 +30,10 @@ public class StationsMergesort {
 	}
 
 	/**
-	 * Function to merge. Code taken from Sedgewick & Wayne's "Algorithms: Fourth
-	 * Edition" on page 271.
+	 * Function to merge. Code based on Sedgewick & Wayne's "Algorithms: Fourth
+	 * Edition" on page 271, but modified to implement the Station type.
 	 * 
-	 * @param a   An array of type Comparable[].
+	 * @param a   An ArrayList of type <Station>.
 	 * @param lo  Low index position.
 	 * @param mid Mid index position.
 	 * @param hi  High index position.
@@ -56,10 +55,11 @@ public class StationsMergesort {
 	}
 
 	/**
-	 * Sorting function intial call. Code taken from Sedgewick & Wayne's
-	 * "Algorithms: Fourth Edition" on page 278.
+	 * Sorting function intial call. Code based from Sedgewick & Wayne's
+	 * "Algorithms: Fourth Edition" on page 278, but modified to fit the Station
+	 * datatype.
 	 * 
-	 * @param a An array of a Comparable type.
+	 * @param a An ArrayList of type <Station>.
 	 */
 	public static void sort(ArrayList<Station> a) {
 		int n = a.size();
