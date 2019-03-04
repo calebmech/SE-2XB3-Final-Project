@@ -53,12 +53,12 @@ public class StationTest {
 	public void testGetCoords2() {
 		assert test2.getCoords() == coord2;
 	}
-	
+
 	@Test
 	public void testCompareTo1() {
 		assert test1.compareTo(test2) == -1;
 	}
-	
+
 	@Test
 	public void testCompareTo2() {
 		assert test2.compareTo(test3) == 1;
