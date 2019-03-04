@@ -19,8 +19,10 @@ public class StationTest {
 	// create some test objects
 	Coord coord1 = new Coord(43.2609, -79.9192);
 	Coord coord2 = new Coord(-20.2984, 0.5748);
+	Coord coord3 = new Coord(-3.1415, 9.2677);
 	Station test1 = new Station(3056, "Station 1", coord1);
 	Station test2 = new Station(5049, "Station 2", coord2);
+	Station test3 = new Station(1, "Station 3", coord3);
 
 	@Test
 	public void testGetCode1() {
@@ -50,6 +52,16 @@ public class StationTest {
 	@Test
 	public void testGetCoords2() {
 		assert test2.getCoords() == coord2;
+	}
+	
+	@Test
+	public void testCompareTo1() {
+		assert test1.compareTo(test2) == -1;
+	}
+	
+	@Test
+	public void testCompareTo2() {
+		assert test2.compareTo(test3) == 1;
 	}
 
 }
