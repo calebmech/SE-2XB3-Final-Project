@@ -27,7 +27,7 @@ public class Coord {
 	 * 
 	 * @return
 	 */
-	public double getLongitude() {
+	public double getLong() {
 		return longitude;
 	}
 
@@ -36,7 +36,7 @@ public class Coord {
 	 * 
 	 * @return
 	 */
-	public double getLatitude() {
+	public double getLat() {
 		return latitude;
 	}
 }
