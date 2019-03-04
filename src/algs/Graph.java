@@ -1,18 +1,20 @@
 package algs;
 
-import java.util.ArrayList;
-
 public class Graph {
+	private final int V;
 	private int E;
-	private ArrayList<Bag<Integer>> adj;
+	private Bag<Integer>[] adj;
 
-	public Graph() {
+	public Graph(int _V) {
+		this.V = _V;
 		this.E = 0;
-		adj = new ArrayList<Bag<Integer>>();
+		adj = (Bag<Integer>[]) new Bag[V];
+		for (int v = 0; v < V; v++)
+			adj[v] = new Bag<Integer>();
 	}
 
 	public int V() {
-		return adj.size();
+		return V;
 	}
 
 	public int E() {
@@ -20,11 +22,11 @@ public class Graph {
 	}
 
 	public void addEdge(int v, int w) {
-		adj.get(v).add(w);
+		adj[v].add(w);
 		E++;
 	}
 	
 	public Iterable<Integer> adj(int v) {
-		return adj.get(v);
+		return adj[v];
 	}
 }
