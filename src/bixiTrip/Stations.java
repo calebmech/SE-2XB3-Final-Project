@@ -1,6 +1,7 @@
 package bixiTrip;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * A singleton datatype to store and perform operations on a list of Stations.
@@ -28,22 +29,48 @@ public class Stations {
 			instance = new Stations();
 		return instance;
 	}
-	
-	Station getStation(Integer code)
-	{
-		if (!isSorted) {
-			//SORT
-		}
-		return null;
+
+	/**
+	 * Private method to sort the Stations stored in the object.
+	 */
+	private void sortStations() {
+		// convert to an array
+		Station[] stationArray = stations.toArray(new Station[stations.size()]);
+		algs.Mergesort.sort(stationArray);
+		// convert back to an ArrayList
+		stations = new ArrayList<Station>(Arrays.asList(stationArray));
+		isSorted = true;
 	}
-	
+
+	/**
+	 * Function to find a station based on its code in a Stations object.
+	 * 
+	 * @param code Integer code that represents the station to be found.
+	 * @return Returns the station with the equivalent code.
+	 */
+	Station getStation(Integer code) {
+		if (!isSorted) {
+			sortStations();
+		}
+		// convert to an array to be searched
+		Station[] stationArray = stations.toArray(new Station[stations.size()]);
+		int index = algs.BinarySearch.stationSearch(stationArray, code);
+		try {
+			return stations.get(index);
+		} catch (ArrayIndexOutOfBoundsException e) {
+			// catch out-of-bounds exception
+			System.out.println("Exception:" + e);
+			throw e;
+		}
+	}
+
 	/**
 	 * Add a Station object to Stations.
 	 * 
 	 * @param station A Station object to be added to the Stations data type.
 	 */
 	void addStation(Station station) {
-		//add station to object
+		// add station to object
 		stations.add(station);
 		isSorted = false;
 	}
@@ -54,24 +81,10 @@ public class Stations {
 	 * @return Returns ArrayList<Stations> of stations stored.
 	 */
 	ArrayList<Station> getStations() {
-		//sort list if not sorted
+		// sort list if not sorted
 		if (!isSorted) {
-			//SORT
+			sortStations();
 		}
 		return stations;
-	}
-	
-	//TEMPORARY TESTING FUNCTION
-	public static void main(String args[]) {
-		Stations stations = new Stations();
-		Station test = new Station(4561, "Test Station 1", new Coord(52.4348, -23.674));
-		Station test2 = new Station(3920, "Test Station 2", new Coord(20.6748, -10.4837));
-		stations.addStation(test);
-		stations.addStation(test2);
-		ArrayList<Station> stationsArray = stations.getStations();
-		for (int i = 0; i < stationsArray.size(); i++) {
-			System.out.println(stationsArray.get(i).getName());
-		}
-
 	}
 }
