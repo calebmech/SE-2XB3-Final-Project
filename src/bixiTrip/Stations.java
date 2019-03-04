@@ -1,7 +1,6 @@
 package bixiTrip;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * A singleton datatype to store and perform operations on a list of Stations.
