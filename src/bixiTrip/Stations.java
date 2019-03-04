@@ -81,4 +81,13 @@ public class Stations {
 		}
 		return stations;
 	}
+	
+	/**
+	 * Function to return the number of stations stored in the instance of Stations.
+	 * 
+	 * @return Returns number of stations stored.
+	 */
+	public int size() {
+		return stations.size();
+	}
 }
