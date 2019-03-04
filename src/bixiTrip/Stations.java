@@ -48,7 +48,7 @@ public class Stations {
 	 * @param code Integer code that represents the station to be found.
 	 * @return Returns the station with the equivalent code.
 	 */
-	Station getStation(Integer code) {
+	public Station getStation(Integer code) {
 		if (!isSorted) {
 			sortStations();
 		}
@@ -59,7 +59,6 @@ public class Stations {
 			return stations.get(index);
 		} catch (ArrayIndexOutOfBoundsException e) {
 			// catch out-of-bounds exception
-			System.out.println("Exception:" + e);
 			throw e;
 		}
 	}
@@ -69,7 +68,7 @@ public class Stations {
 	 * 
 	 * @param station A Station object to be added to the Stations data type.
 	 */
-	void addStation(Station station) {
+	public void addStation(Station station) {
 		// add station to object
 		stations.add(station);
 		isSorted = false;
@@ -80,7 +79,7 @@ public class Stations {
 	 * 
 	 * @return Returns ArrayList<Stations> of stations stored.
 	 */
-	ArrayList<Station> getStations() {
+	public ArrayList<Station> getStations() {
 		// sort list if not sorted
 		if (!isSorted) {
 			sortStations();
