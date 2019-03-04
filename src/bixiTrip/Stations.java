@@ -34,11 +34,7 @@ public class Stations {
 	 * Private method to sort the Stations stored in the object.
 	 */
 	private void sortStations() {
-		// convert to an array
-		Station[] stationArray = stations.toArray(new Station[stations.size()]);
-		algs.Mergesort.sort(stationArray);
-		// convert back to an ArrayList
-		stations = new ArrayList<Station>(Arrays.asList(stationArray));
+		algs.StationsMergesort.sort(stations);
 		isSorted = true;
 	}
 
@@ -53,8 +49,7 @@ public class Stations {
 			sortStations();
 		}
 		// convert to an array to be searched
-		Station[] stationArray = stations.toArray(new Station[stations.size()]);
-		int index = algs.BinarySearch.stationSearch(stationArray, code);
+		int index = algs.BinarySearch.stationSearch(stations, code);
 		try {
 			return stations.get(index);
 		} catch (ArrayIndexOutOfBoundsException e) {
