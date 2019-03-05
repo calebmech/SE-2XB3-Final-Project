@@ -39,4 +39,8 @@ public class Coord {
 	public double getLat() {
 		return latitude;
 	}
+	
+	public String toString() {
+		return getLat() + "," + getLong();
+	}
 }
