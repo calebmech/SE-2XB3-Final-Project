@@ -8,14 +8,15 @@ public class Paths {
 	
 	private static Paths instance = null;
 	
-	private Paths(int size) {
-		this.paths = new Graph(size);
+	public static Paths getInstance() {
+		if (instance == null) 
+			instance = new Paths();
+		return instance;
 	}
 	
-	public static Paths Paths(int size) {
-		if (instance == null) 
-			instance = new Paths(size);
-		return instance;
+	private Paths() {
+		Stations stations = new Stations();
+		this.paths = new Graph(stations.size());
 	}
 	
 	public Iterable<Integer> getPath(int start, int end) {
@@ -35,7 +36,7 @@ public class Paths {
 		Path path2 = new Path(trip2);
 		Path path3 = new Path(trip3);
 		
-		Paths paths = new Paths(5);
+		Paths paths = new Paths();
 		paths.addPath(path1);
 		paths.addPath(path2);
 		paths.addPath(path3);

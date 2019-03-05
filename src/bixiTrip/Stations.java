@@ -23,7 +23,7 @@ public class Stations {
 	 * @return Returns a single instance of the Stations object, whether one already
 	 *         exists or not.
 	 */
-	public static Stations Stations() {
+	public static Stations getInstance() {
 		if (instance == null)
 			instance = new Stations();
 		return instance;
