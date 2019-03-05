@@ -31,7 +31,7 @@ public class Trip {
 		String url = "https://www.google.com/maps/dir/?api=1";
 		url += "&origin=" + route.dequeue().getCoords().toString();
 		url += "&waypoints=";
-		while (route.size() > 2) {
+		while (route.size() > 1) {
 			url += route.dequeue().getCoords().toString() + "|"; 
 		}
 		url += "&destination=" + route.dequeue().getCoords().toString();
