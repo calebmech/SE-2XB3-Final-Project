@@ -8,6 +8,13 @@ import org.junit.Test;
 
 import bixiTrip.PastTrip;
 
+/**
+ * Class that is used to test the different functions in the PastTrip.java
+ * module
+ * 
+ * @author Matthew Braden
+ *
+ */
 public class PastTripTest {
 
 	PastTrip test1 = new PastTrip(500, 1000, 180);
