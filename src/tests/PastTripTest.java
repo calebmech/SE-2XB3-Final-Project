@@ -18,31 +18,30 @@ public class PastTripTest {
 	public void testGetStationStart() {
 		assert test1.getStationStart() == 500;
 	}
-	
+
 	@Test
 	public void testGetStationStart2() {
 		assert test2.getStationStart() == 673;
 	}
-	
+
 	@Test
 	public void testGetStationEnd1() {
 		assert test1.getStationEnd() == 1000;
 	}
-	
+
 	@Test
 	public void testGetStationEnd2() {
 		assert test2.getStationEnd() == 539;
 	}
-	
+
 	@Test
 	public void testGetDuration1() {
 		assert test1.getDuration() == 180;
 	}
-	
+
 	@Test
 	public void testGetDuration2() {
 		assert test2.getDuration() == 300;
 	}
-	
 
 }
