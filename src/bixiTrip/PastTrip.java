@@ -30,7 +30,7 @@ public class PastTrip implements Comparable<PastTrip> {
      * @return The start station
      */
     public int getStationStart(){
-        return stationStart;
+        return this.stationStart;
     }
 
     /**
@@ -39,7 +39,7 @@ public class PastTrip implements Comparable<PastTrip> {
      * @return The end station
      */
     public int getStationEnd(){
-        return stationEnd;
+        return this.stationEnd;
     }
 
     /**
@@ -48,7 +48,7 @@ public class PastTrip implements Comparable<PastTrip> {
      * @return The duration of the trip
      */
     public int getDuration(){
-        return duration;
+        return this.duration;
     }
 
     /**
