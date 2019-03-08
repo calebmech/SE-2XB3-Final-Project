@@ -1,5 +1,7 @@
 package algs;
 
+import java.util.ArrayList;
+
 import bixiTrip.PastTrip;
 
 /**
@@ -38,16 +40,16 @@ public class PastTripsBUMergeSort {
 	public static void merge(ArrayList<PastTrip> a, int lo, int mid, int hi) {
 		int i = lo, j = mid + 1;
 		for (int k = lo; k <= hi; k++)
-			aux[k] = a[k];
+			aux[k] = a.get(k);
 		for (int k = lo; k <= hi; k++)
 			if (i > mid)
-				a[k] = aux[j++];
+				a.set(k, (PastTrip) aux[j++]);
 			else if (j > hi)
-				a[k] = aux[i++];
+				a.set(k, (PastTrip) aux[i++]);
 			else if (less(aux[j], aux[i]))
-				a[k] = aux[j++];
+				a.set(k, (PastTrip) aux[j++]);
 			else
-				a[k] = aux[i++];
+				a.set(k, (PastTrip) aux[i++]);
 	}
 
 	/**
@@ -57,11 +59,11 @@ public class PastTripsBUMergeSort {
 	 * @param a ArrayList to be sorted
 	 */
 	public static void sort(ArrayList<PastTrip> a) {
-		int n = a.length;
+		int n = a.size();
 		aux = new Comparable[n];
 		for (int sz = 1; sz < n; sz = sz + sz) {
 			for (int lo = 0; lo < n - sz; lo += sz + sz) {
-				merge(a, lo, lo + sz - 1, Math.min(lo + sz + sz - 1, N - 1));
+				merge(a, lo, lo + sz - 1, Math.min(lo + sz + sz - 1, n - 1));
 			}
 		}
 	}
