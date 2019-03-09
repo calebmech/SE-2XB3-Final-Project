@@ -6,7 +6,7 @@ public class Trip {
 	private Station start;
 	private Station end;
 	private Queue<Station> route;
-
+	private Boolean hasRoute = false;
 	public Trip(Station _start, Station _end) {
 		this.start = _start;
 		this.end = _end;
@@ -14,7 +14,7 @@ public class Trip {
 	}
 
 	public Queue<Station> getRoute() {
-		if (route.size() == 0) {
+		if (hasRoute == false) {
 			Paths paths = Paths.getInstance();
 			Stations stations = Stations.getInstance();
 			Iterable<Integer> path = paths.getPath(start.getCode(), end.getCode());
@@ -22,12 +22,15 @@ public class Trip {
 			path.forEach(stationCode -> {
 				route.enqueue(stations.getStation(stationCode));
 			});
+			hasRoute = true;
 		}
 
 		return route;
 	}
 	
 	public String getUrl() {
+		if (!hasRoute)
+			getRoute();
 		String url = "https://www.google.com/maps/dir/?api=1";
 		url += "&origin=" + route.dequeue().getCoords().toString();
 		url += "&waypoints=";
