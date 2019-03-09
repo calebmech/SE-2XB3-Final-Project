@@ -17,9 +17,9 @@ public class Coord {
 	 * @param _longitude Longitude of coordinate
 	 * @param _latitude Latitude of coordinate
 	 */
-	public Coord(double _longitude, double _latitude) {
-		this.longitude = _longitude;
-		this.latitude = _latitude;
+	public Coord(double _lat, double _long) {
+		this.longitude = _long;
+		this.latitude = _lat;
 	}
 
 	/**
