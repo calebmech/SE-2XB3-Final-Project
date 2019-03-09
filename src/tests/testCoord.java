@@ -18,25 +18,14 @@ public class testCoord {
 	
 
 	@Test
-<<<<<<< HEAD
-	public void testLogitude() {
+	public void testLongitude() {
 		assert coord1.getLong() == -79.9192;
 		assert coord2.getLong() == 0.5748;
-=======
-	public void testLongitude() {
-		assert coord1.getLong() == 43.2609;
-		assert coord2.getLong() == -20.2984;
->>>>>>> 762377b62b8099ec921a40f724a8b0045cadf986
 	}
 	
 	@Test
 	public void testLatitude() {
-<<<<<<< HEAD
 		assert coord1.getLat() == 43.2609;
 		assert coord2.getLat() == -20.2984;
-=======
-		assert coord1.getLat() == -79.9192;
-		assert coord2.getLat() == 0.5748;
->>>>>>> 762377b62b8099ec921a40f724a8b0045cadf986
 	}
 }
