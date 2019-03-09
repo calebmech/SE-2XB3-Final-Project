@@ -7,7 +7,7 @@ public class Trip {
 	private Station end;
 	private Queue<Station> route;
 
-	public void Trip(Station _start, Station _end) {
+	public Trip(Station _start, Station _end) {
 		this.start = _start;
 		this.end = _end;
 		this.route = new Queue<Station>();
