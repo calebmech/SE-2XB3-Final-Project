@@ -20,19 +20,21 @@ public class BixiTrip {
 		Integer startCode, endCode;
 		Trip mainTrip;
 		String url;
-		
+
 		// read input codes
 		try {
 			startCode = Integer.parseInt(args[0]);
 		} catch (Exception e) {
-			System.out.println("ERROR: Station Start code could not be parsed properly. Please correct input and try again.");
+			System.out.println(
+					"ERROR: Station Start code could not be parsed properly. Please correct input and try again.");
 			return;
 		}
 
 		try {
 			endCode = Integer.parseInt(args[1]);
 		} catch (Exception e) {
-			System.out.println("ERROR: Station End code could not be parsed properly. Please correct input and try again.");
+			System.out.println(
+					"ERROR: Station End code could not be parsed properly. Please correct input and try again.");
 			return;
 		}
 
@@ -76,7 +78,7 @@ public class BixiTrip {
 			return;
 		}
 		System.out.println("Start station found successfully");
-		
+
 		try {
 			end = stations.getStation(endCode);
 		} catch (Exception e) {
@@ -85,11 +87,11 @@ public class BixiTrip {
 		}
 		System.out.println("End station found successfully");
 		System.out.println("-----------------------------------------------------------");
-		
+
 		mainTrip = new Trip(start, end);
 		System.out.println("Finding best route...");
 		url = mainTrip.getUrl();
-		System.out.println("Here is your Google Maps trip URL:");
+		System.out.println("Here is your Google Maps trip URL:" + url);
 	}
 
 }
