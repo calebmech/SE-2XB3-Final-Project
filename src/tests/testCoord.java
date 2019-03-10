@@ -1,5 +1,11 @@
 package tests;
 
+/** 
+ * Test class for the Coord abstract data type.
+ * 
+ * @author Harsh Mahajan
+ */
+
 import static org.junit.Assert.*;
 
 import org.junit.After;
@@ -13,8 +19,6 @@ public class testCoord {
 	// create some test objects
 		Coord coord1 = new Coord(43.2609, -79.9192);
 		Coord coord2 = new Coord(-20.2984, 0.5748);
-		Station test1 = new Station(3056, "Station 1", coord1);
-		Station test2 = new Station(5049, "Station 2", coord2);
 	
 
 	@Test
