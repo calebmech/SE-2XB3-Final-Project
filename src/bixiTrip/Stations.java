@@ -56,7 +56,15 @@ public class Stations {
 			throw e;
 		}
 	}
-
+	
+	public int getIndex(Integer code) {
+		if (!isSorted) {
+			sortStations();
+		}
+		// convert to an array to be searched
+		return algs.BinarySearch.stationSearch(stations, code);
+	}
+	
 	/**
 	 * Add a Station object to Stations.
 	 * 
@@ -71,7 +79,7 @@ public class Stations {
 	/**
 	 * Function to return the stations stored in the instance of Stations.
 	 * 
-	 * @return Returns ArrayList<Stations> of stations stored.
+	 * @return Returns ArrayList&lt;Stations&gt; of stations stored.
 	 */
 	public ArrayList<Station> getStations() {
 		// sort list if not sorted
