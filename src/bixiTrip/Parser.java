@@ -23,7 +23,7 @@ public class Parser {
 	 * @param dirPath inputted directory path
 	 * @return object containing past trips data
 	 */
-	public PastTrips parsePastTrips(String dirPath) {
+	public static PastTrips parsePastTrips(String dirPath) {
 		
 		// Get instance/any previous instance of pastTrips object
 		PastTrips pastTrips = PastTrips.getInstance();
@@ -69,7 +69,7 @@ public class Parser {
 	 * @param filePath inputted file path
 	 * @return object containing station data
 	 */
-	public Stations parseStations(String filePath) {
+	public static Stations parseStations(String filePath) {
 
 		// Get instance/any previous instance of stations object
 		Stations stations = Stations.getInstance();
