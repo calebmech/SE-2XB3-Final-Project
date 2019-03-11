@@ -1,6 +1,8 @@
 package algs;
 
-public class Queue<Item> {
+import java.util.Iterator;
+
+public class Queue<Item> implements Iterable<Item> {
 	private Node first;
 	private Node last;
 	private int n;
@@ -37,5 +39,25 @@ public class Queue<Item> {
 		if (isEmpty())
 			last = null;
 		return item;
+	}
+
+	public Iterator<Item> iterator() {
+		return new ListIterator();
+	}
+	
+	private class ListIterator implements Iterator<Item> {
+		private Node current = first;
+		
+		public boolean hasNext() {
+			return current != null;
+		}
+		
+		public void remove() {}
+		
+		public Item next() {
+			Item item = current.item;
+			current = current.next;
+			return item;
+		}
 	}
 }
