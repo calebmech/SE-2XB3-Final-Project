@@ -1,7 +1,6 @@
 package bixiTrip;
 
 import algs.Graph;
-import algs.SP;
 
 /**
  * Abstract object that holds all Path instances
@@ -63,7 +62,7 @@ public class Paths {
 		PastTrips pastTrips = PastTrips.getInstance();
 		
 		for (PastTrip pastTrip : pastTrips.getNextPath()) {
-			Path path = getPath(pastTrip.getStationStart(), pastTrip.getStationEnd());
+			Path path = getPath(pastTrip.getStartCode(), pastTrip.getEndCode());
 
 			if (path == null)
 				addPath(new Path(pastTrip));
@@ -73,13 +72,11 @@ public class Paths {
 	}
 
 	/**
-	 * Get the "shortest path" sequence of Path's between two stations
-	 * @param start	Code of the Station where to start
-	 * @param end	Code of the Station where to end
-	 * @return Sequence of Path's to travel
+	 * Getter for Graph containing all Paths
+	 * 
+	 * @return Returns all Paths connected in a Graph
 	 */
-	public Iterable<Path> getPathSeq(int start, int end) {
-		SP shortestPath = new SP(graph, start);
-		return shortestPath.pathTo(end);
+	public Graph getGraph() {
+		return graph;
 	}
 }

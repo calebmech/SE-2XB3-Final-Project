@@ -1,6 +1,8 @@
 package bixiTrip;
 
+import algs.Graph;
 import algs.Queue;
+import algs.SP;
 
 /**
  * Trip abstract data type that provides directions
@@ -14,7 +16,7 @@ public class Trip {
 	private Station start;
 	private Station end;
 	private Queue<Station> route;
-	private Boolean hasRoute = false;
+	private SP sp;
 
 	/**
 	 * Constructor for Trip object
@@ -26,6 +28,17 @@ public class Trip {
 		this.start = _start;
 		this.end = _end;
 		this.route = new Queue<Station>();
+		
+		Paths paths = Paths.getInstance();
+		Graph graph = paths.getGraph();
+		Stations stations = Stations.getInstance();
+
+		this.sp = new SP(graph, start.getCode());
+		Iterable<Path> pathSeq = sp.pathTo(end.getCode());
+
+		pathSeq.forEach(path -> {
+			route.enqueue(stations.getStationByIndex(path.getStartIndex()));
+		});
 	}
 
 	/**
@@ -34,18 +47,16 @@ public class Trip {
 	 * @return Returns sequence of Stations to travel
 	 */
 	public Iterable<Station> getRoute() {
-		if (hasRoute == false) {
-			Paths paths = Paths.getInstance();
-			Stations stations = Stations.getInstance();
-			Iterable<Path> pathSeq = paths.getPathSeq(start.getCode(), end.getCode());
-
-			pathSeq.forEach(path -> {
-				route.enqueue(stations.getStationByCode(path.getStartCode()));
-			});
-			hasRoute = true;
-		}
-
 		return route;
+	}
+	
+	/**
+	 * Getter for duration of trip
+	 * 
+	 * @return Returns number of seconds a trip should take as an int
+	 */
+	public int getDuration() {
+		return (int) Math.round(sp.distTo(end.getCode()));
 	}
 	
 	/**
@@ -54,8 +65,6 @@ public class Trip {
 	 * @return Returns string representation of directions URL
 	 */
 	public String getUrl() {
-		if (!hasRoute)
-			getRoute();
 		String url = "https://www.google.com/maps/dir/?api=1";
 		url += "&origin=" + route.dequeue().getCoords().toString();
 		url += "&waypoints=";
