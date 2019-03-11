@@ -18,7 +18,7 @@ public class Path extends PastTrip {
 	 * @param _trip	PastTrip object to base the Path on.
 	 */
 	public Path(PastTrip _trip) {
-		super(_trip.getStationStart(), _trip.getStationEnd(), 0);
+		super(_trip.getStartCode(), _trip.getEndCode(), 0);
 		this.duration = _trip.getDuration();
 		this.stations = Stations.getInstance();
 		count = 1;
@@ -41,7 +41,7 @@ public class Path extends PastTrip {
 	 * @return Returns start station index as an int.
 	 */
 	public int getStartIndex() {
-		return stations.getIndex(stationStart);
+		return stations.getIndex(startCode);
 	}
 	
 	/**
@@ -50,7 +50,7 @@ public class Path extends PastTrip {
 	 * @return Returns end station index as an int.
 	 */
 	public int getEndIndex() {
-		return stations.getIndex(stationEnd);
+		return stations.getIndex(startCode);
 	}
 
 	/**
