@@ -1,7 +1,6 @@
 package bixiTrip;
 
 import java.util.ArrayList;
-import algs.PastTripsBUMergeSort;
 
 /**
  * Class that contains the access to different trips
@@ -12,7 +11,6 @@ import algs.PastTripsBUMergeSort;
 public class PastTrips {
 
 	private static PastTrips instance = null;
-	private boolean isSorted = true;
 	private ArrayList<PastTrip> pastTrips = new ArrayList<PastTrip>();
 
 	/**
@@ -42,6 +40,8 @@ public class PastTrips {
 	 */
 	public ArrayList<PastTrip> getNextPath() {
 		sortPastTrips();
+		getInstance();
+		//pastTrips = pastTrips.remove(instance);
 		return pastTrips;
 	}
 
