@@ -19,7 +19,7 @@ public class Station implements Comparable<Station> {
 	 * @param _name   String representing the station's name.
 	 * @param _coords Coord representing the coordinates of the station.
 	 */
-	public Station(Integer _code, String _name, Coord _coords) {
+	public Station(int _code, String _name, Coord _coords) {
 		this.code = _code;
 		this.name = _name;
 		this.coords = _coords;
@@ -30,7 +30,7 @@ public class Station implements Comparable<Station> {
 	 * 
 	 * @return Returns station's code as an integer.
 	 */
-	public Integer getCode() {
+	public int getCode() {
 		return this.code;
 	}
 

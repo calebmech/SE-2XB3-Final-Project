@@ -43,7 +43,7 @@ public class Stations {
 	 * @param code Integer code that represents the station to be found.
 	 * @return Returns the station with the equivalent code.
 	 */
-	public Station getStation(Integer code) {
+	public Station getStationByCode(int code) {
 		if (!isSorted) {
 			sortStations();
 		}
@@ -65,6 +65,42 @@ public class Stations {
 		return algs.BinarySearch.stationSearch(stations, code);
 	}
 	
+	/**
+	 * Function to find a station based on its code in a Stations object.
+	 * 
+	 * @param index Integer code that represents the index position of the station
+	 *              requested.
+	 * @return Returns the station with the equivalent code.
+	 */
+	public Station getStationByIndex(int index) {
+		if (!isSorted) {
+			sortStations();
+		}
+		try {
+			return stations.get(index);
+		} catch (Exception e) {
+			// catch out-of-bounds exception
+			throw e;
+		}
+	}
+
+	/**
+	 * Function to find a station's index in a Stations object.
+	 * 
+	 * @param code Integer code that represents the station to be found.
+	 * @return Returns an int representing the index position.
+	 */
+	public int getIndex(int code) {
+		if (!isSorted) {
+			sortStations();
+		}
+		// convert to an array to be searched
+		int index = algs.BinarySearch.stationSearch(stations, code);
+		if (index < 0)
+			throw new IndexOutOfBoundsException("Station not found.");
+		return index;
+	}
+
 	/**
 	 * Add a Station object to Stations.
 	 * 
