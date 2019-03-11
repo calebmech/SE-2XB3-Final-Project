@@ -40,9 +40,7 @@ public class PastTrips {
 	 * @return List of past trips
 	 */
 	public ArrayList<PastTrip> getTrips(Station start, Station end) {
-		if (!isSorted) {
-			sortPastTrips();
-		}
+		sortPastTrips();
 		return pastTrips;
 	}
 
@@ -52,6 +50,7 @@ public class PastTrips {
 	 * @param trip A new single trip
 	 */
 	public void addTrip(PastTrip trip) {
-
+		pastTrips.add(trip);
+		
 	}
 }
