@@ -40,7 +40,7 @@ public class Trip {
 			Iterable<Path> pathSeq = paths.getPathSeq(start.getCode(), end.getCode());
 
 			pathSeq.forEach(path -> {
-				route.enqueue(stations.getStationByCode(path.getStationStart()));
+				route.enqueue(stations.getStationByCode(path.getStartCode()));
 			});
 			hasRoute = true;
 		}

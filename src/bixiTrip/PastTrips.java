@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Class that contains the access to different trips
  * 
- * @author matthewbraden
+ * @author Matthew Braden
  *
  */
 public class PastTrips {
