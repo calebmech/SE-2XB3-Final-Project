@@ -3,31 +3,62 @@ package bixiTrip;
 import algs.Graph;
 import algs.SP;
 
+/**
+ * Abstract object that holds all Path instances
+ * 
+ * @author Caleb Mech
+ *
+ */
+
 public class Paths {
 	private Graph graph;
 	private Stations stations;
 
 	private static Paths instance = null;
 
+	/**
+	 * Getter for a singleton Paths object
+	 * 
+	 * @return Returns a single instance of the Paths object, whether one already
+	 *         exists or not
+	 */
 	public static Paths getInstance() {
 		if (instance == null)
 			instance = new Paths();
 		return instance;
 	}
 
+	/**
+	 * Constructor for the Paths object
+	 * 
+	 */
 	private Paths() {
 		stations = Stations.getInstance();
 		this.graph = new Graph(stations.size());
 	}
 
+	/**
+	 * Add a Path to the Paths object
+	 * 
+	 * @param path Path to add to the object
+	 */
 	public void addPath(Path path) {
 		graph.addPath(path);
 	}
 	
+	/**
+	 * Get a Path that's stored in the Paths object
+	 * @param startCode	Code of the Station where the Path starts
+	 * @param endCode	Code of the Station where the Path end
+	 * @return Requested Path if it exists in Paths or null
+	 */
 	public Path getPath(int startCode, int endCode) {
 		return graph.getPath(stations.getIndex(startCode), stations.getIndex(endCode));
 	}
 
+	/**
+	 * Import all PastTrip's into the Paths object
+	 */
 	public void importPastTrips() {
 		PastTrips pastTrips = PastTrips.getInstance();
 		
@@ -41,27 +72,14 @@ public class Paths {
 		}
 	}
 
+	/**
+	 * Get the "shortest path" sequence of Path's between two stations
+	 * @param start	Code of the Station where to start
+	 * @param end	Code of the Station where to end
+	 * @return Sequence of Path's to travel
+	 */
 	public Iterable<Path> getPathSeq(int start, int end) {
 		SP shortestPath = new SP(graph, start);
 		return shortestPath.pathTo(end);
 	}
-
-//	public static void main(String[] args) {
-//		PastTrip trip1 = new PastTrip(1, 2, 5);
-//		PastTrip trip2 = new PastTrip(2, 3, 5);
-//		PastTrip trip3 = new PastTrip(3, 4, 5);
-//		Path path1 = new Path(trip1);
-//		Path path2 = new Path(trip2);
-//		Path path3 = new Path(trip3);
-//
-//		Paths paths = new Paths();
-//		paths.addPath(path1);
-//		paths.addPath(path2);
-//		paths.addPath(path3);
-//
-//		Iterable<Path> route = paths.getPath(1, 3);
-//		for (Integer station : route) {
-//			System.out.println(station);
-//		}
-//	}
 }
