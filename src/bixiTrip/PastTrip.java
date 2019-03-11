@@ -7,21 +7,21 @@ package bixiTrip;
  * @author Matthew Braden
  */
 public class PastTrip implements Comparable<PastTrip> {
-	protected int stationStart;
-	protected int stationEnd;
+	protected int startCode;
+	protected int endCode;
 	private int duration;
 
 	/**
 	 * Function that stores the past trips results
 	 * 
-	 * @param stationStart
-	 * @param stationEnd
-	 * @param duration
+	 * @param _startCode Station start code
+	 * @param _endCode   Station end code
+	 * @param _duration  Duration of the trip
 	 */
-	public PastTrip(int stationStart, int stationEnd, int duration) {
-		this.stationStart = stationStart;
-		this.stationEnd = stationEnd;
-		this.duration = duration;
+	public PastTrip(int _startCode, int _endCode, int _duration) {
+		this.startCode = _startCode;
+		this.endCode = _endCode;
+		this.duration = _duration;
 	}
 
 	/**
@@ -29,8 +29,8 @@ public class PastTrip implements Comparable<PastTrip> {
 	 * 
 	 * @return The start station
 	 */
-	public int getStationStart() {
-		return this.stationStart;
+	public int getStartCode() {
+		return this.startCode;
 	}
 
 	/**
@@ -38,8 +38,8 @@ public class PastTrip implements Comparable<PastTrip> {
 	 * 
 	 * @return The end station
 	 */
-	public int getStationEnd() {
-		return this.stationEnd;
+	public int getEndCode() {
+		return this.endCode;
 	}
 
 	/**
@@ -59,9 +59,9 @@ public class PastTrip implements Comparable<PastTrip> {
 	 */
 	@Override
 	public int compareTo(PastTrip trip) {
-		int start = Integer.compare(this.getStationStart(), trip.getStationStart());
+		int start = Integer.compare(this.getStartCode(), trip.getStartCode());
 		if (start == 0) {
-			return Integer.compare(this.getStationEnd(), trip.getStationEnd());
+			return Integer.compare(this.getEndCode(), trip.getEndCode());
 		} else {
 			return start;
 		}
