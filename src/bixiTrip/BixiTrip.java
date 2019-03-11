@@ -46,25 +46,9 @@ public class BixiTrip {
 		System.out.println("-----------------------------------------------------------");
 
 		// read data from files
-		stations = parseStations("data\\Stations_2018.csv");
+		stations = parseStations("stations\\Stations_2018.csv");
 		System.out.println("Stations imported successfully.");
-		pastTrips = parsePastTrips("data\\OD_2018-04.csv");
-		System.out.println("April trips imported successfully");
-		pastTrips = parsePastTrips("data\\OD_2018-05.csv");
-		System.out.println("May trips imported successfully");
-		pastTrips = parsePastTrips("data\\OD_2018-06.csv");
-		System.out.println("June trips imported successfully");
-		pastTrips = parsePastTrips("data\\OD_2018-07.csv");
-		System.out.println("July trips imported successfully");
-		pastTrips = parsePastTrips("data\\OD_2018-08.csv");
-		System.out.println("August trips imported successfully");
-		pastTrips = parsePastTrips("data\\OD_2018-09.csv");
-		System.out.println("September trips imported successfully");
-		pastTrips = parsePastTrips("data\\OD_2018-10.csv");
-		System.out.println("October trips imported successfully");
-		pastTrips = parsePastTrips("data\\OD_2018-11.csv");
-		System.out.println("November trips imported successfully");
-		System.out.println();
+		pastTrips = parsePastTrips("pastTrips");
 		System.out.println("Data import successful.");
 		System.out.println("-----------------------------------------------------------");
 		System.out.println();
@@ -72,7 +56,7 @@ public class BixiTrip {
 		// define start and end stations
 		System.out.println("Parsing stations...");
 		try {
-			start = stations.getStation(startCode);
+			start = stations.getStationByCode(startCode);
 		} catch (Exception e) {
 			System.out.println("ERROR: Start station could not be found in station list.");
 			return;
@@ -80,7 +64,7 @@ public class BixiTrip {
 		System.out.println("Start station found successfully");
 
 		try {
-			end = stations.getStation(endCode);
+			end = stations.getStationByCode(endCode);
 		} catch (Exception e) {
 			System.out.println("ERROR: End station could not be found in station list.");
 			return;
@@ -89,8 +73,10 @@ public class BixiTrip {
 		System.out.println("-----------------------------------------------------------");
 
 		mainTrip = new Trip(start, end);
-		System.out.println("Finding best route...");
+		System.out.println("Finding best route from" + start.getName() + "to" + end.getName() + "...");
 		url = mainTrip.getUrl();
+		System.out.println();
+		System.out.println("Your trip will take an estimated" + mainTrip.getDuration() + "minutes in total.");
 		System.out.println("Here is your Google Maps trip URL:" + url);
 	}
 
