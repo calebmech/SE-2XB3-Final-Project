@@ -42,16 +42,16 @@ public class BixiTrip {
 		Stations stations = new Stations();
 		PastTrips pastTrips = new PastTrips();
 
-		System.out.println("Welcome to BixiTrip. Please wait while we import our data.");
+		System.out.println("Welcome to BixiTrip. Please wait while we import our data...");
 		System.out.println("-----------------------------------------------------------");
 
 		// read data from files
 		stations = Parser.parseStations("stations\\Stations_2018.csv");
 		System.out.println("Stations imported successfully.");
 		pastTrips = Parser.parsePastTrips("pastTrips");
+		System.out.println("Past trips imported successfully.");
 		System.out.println("Data import successful.");
 		System.out.println("-----------------------------------------------------------");
-		System.out.println();
 
 		// define start and end stations
 		System.out.println("Parsing stations...");
@@ -61,7 +61,7 @@ public class BixiTrip {
 			System.out.println("ERROR: Start station could not be found in station list.");
 			return;
 		}
-		System.out.println("Start station found successfully");
+		System.out.println("Start station found successfully.");
 
 		try {
 			end = stations.getStationByCode(endCode);
@@ -69,11 +69,11 @@ public class BixiTrip {
 			System.out.println("ERROR: End station could not be found in station list.");
 			return;
 		}
-		System.out.println("End station found successfully");
+		System.out.println("End station found successfully.");
 		System.out.println("-----------------------------------------------------------");
 
 		mainTrip = new Trip(start, end);
-		System.out.println("Finding best route from" + start.getName() + "to" + end.getName() + "...");
+		System.out.println("Finding best route from " + start.getName() + " to " + end.getName() + "...");
 		url = mainTrip.getUrl();
 		System.out.println();
 		System.out.println("Your trip will take an estimated" + mainTrip.getDuration() + "minutes in total.");
