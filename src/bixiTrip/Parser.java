@@ -12,6 +12,7 @@
 package bixiTrip;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Parser {
@@ -52,6 +53,11 @@ public class Parser {
 						
 					}
 				}
+				
+				// Catch block
+				catch (FileNotFoundException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 
@@ -91,6 +97,11 @@ public class Parser {
 				// Add a station to stations object
 				stations.addStation(new Station(code, name, coords));
 			}
+		}
+		
+		// Catch block
+		catch (FileNotFoundException e) {
+			e.printStackTrace();
 		}
 		return stations;
 	}
