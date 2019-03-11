@@ -23,22 +23,22 @@ public class PastTripTest {
 
 	@Test
 	public void testGetStationStart() {
-		assert test1.getStationStart() == 500;
+		assert test1.getStartCode() == 500;
 	}
 
 	@Test
 	public void testGetStationStart2() {
-		assert test2.getStationStart() == 673;
+		assert test2.getStartCode() == 673;
 	}
 
 	@Test
 	public void testGetStationEnd1() {
-		assert test1.getStationEnd() == 1000;
+		assert test1.getEndCode() == 1000;
 	}
 
 	@Test
 	public void testGetStationEnd2() {
-		assert test2.getStationEnd() == 539;
+		assert test2.getEndCode() == 539;
 	}
 
 	@Test
