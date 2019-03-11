@@ -7,20 +7,21 @@ public class Trip {
 	private Station end;
 	private Queue<Station> route;
 	private Boolean hasRoute = false;
+
 	public Trip(Station _start, Station _end) {
 		this.start = _start;
 		this.end = _end;
 		this.route = new Queue<Station>();
 	}
 
-	public Queue<Station> getRoute() {
+	public Iterable<Station> getRoute() {
 		if (hasRoute == false) {
 			Paths paths = Paths.getInstance();
 			Stations stations = Stations.getInstance();
-			Iterable<Integer> path = paths.getPath(start.getCode(), end.getCode());
+			Iterable<Path> pathSeq = paths.getPathSeq(start.getCode(), end.getCode());
 
-			path.forEach(stationCode -> {
-				route.enqueue(stations.getStation(stationCode));
+			pathSeq.forEach(path -> {
+				route.enqueue(stations.getStation(path.getStationStart()));
 			});
 			hasRoute = true;
 		}
