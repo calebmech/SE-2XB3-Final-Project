@@ -61,7 +61,7 @@ public class BixiTrip {
 			System.out.println("ERROR: Start station could not be found in station list.");
 			return;
 		}
-		System.out.println("Start station found successfully.");
+		System.out.println("Start station '" + start.getName() + "' found successfully.");
 
 		try {
 			end = stations.getStationByCode(endCode);
@@ -69,14 +69,14 @@ public class BixiTrip {
 			System.out.println("ERROR: End station could not be found in station list.");
 			return;
 		}
-		System.out.println("End station found successfully.");
+		System.out.println("End station '" + end.getName() + "' found successfully.");
 		System.out.println("-----------------------------------------------------------");
 
 		mainTrip = new Trip(start, end);
 		System.out.println("Finding best route from " + start.getName() + " to " + end.getName() + "...");
 		url = mainTrip.getUrl();
 		System.out.println();
-		System.out.println("Your trip will take an estimated" + mainTrip.getDuration() + "minutes in total.");
+		//System.out.println("Your trip will take an estimated" + mainTrip.getDuration() + "minutes in total.");
 		System.out.println("Here is your Google Maps trip URL:" + url);
 	}
 
