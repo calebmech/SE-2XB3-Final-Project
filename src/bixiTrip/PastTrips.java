@@ -26,20 +26,21 @@ public class PastTrips {
 		}
 		return instance;
 	}
-	
+
+	/**
+	 * Function that sorts a list of pastTrips
+	 */
 	private void sortPastTrips() {
 		algs.PastTripsBUMergeSort.sort(pastTrips);
 	}
 
 	/**
 	 * 
-	 * Function that returns a list of past trips between two stations
+	 * Function that returns a next list of past trips between two stations
 	 * 
-	 * @param start The starting station of the trip
-	 * @param end   The end station of the trip
 	 * @return List of past trips
 	 */
-	public ArrayList<PastTrip> getTrips(Station start, Station end) {
+	public ArrayList<PastTrip> getNextPath() {
 		sortPastTrips();
 		return pastTrips;
 	}
@@ -51,6 +52,6 @@ public class PastTrips {
 	 */
 	public void addTrip(PastTrip trip) {
 		pastTrips.add(trip);
-		
+
 	}
 }
