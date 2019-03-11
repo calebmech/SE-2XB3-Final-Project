@@ -8,7 +8,11 @@ package bixiTrip;
  */
 
 public class BixiTrip {
-
+	
+	private static void longLine() {
+		System.out.println("-----------------------------------------------------------");
+	}
+	
 	/**
 	 * Main function for BixiTrip.
 	 * 
@@ -20,6 +24,7 @@ public class BixiTrip {
 		Integer startCode, endCode;
 		Trip mainTrip;
 		String url;
+		Paths paths;
 
 		// read input codes
 		try {
@@ -43,7 +48,7 @@ public class BixiTrip {
 		PastTrips pastTrips = new PastTrips();
 
 		System.out.println("Welcome to BixiTrip. Please wait while we import our data...");
-		System.out.println("-----------------------------------------------------------");
+		longLine();
 
 		// read data from files
 		stations = Parser.parseStations("stations\\Stations_2018.csv");
@@ -51,10 +56,17 @@ public class BixiTrip {
 		pastTrips = Parser.parsePastTrips("pastTrips");
 		System.out.println("Past trips imported successfully.");
 		System.out.println("Data import successful.");
-		System.out.println("-----------------------------------------------------------");
+		longLine();
 
+		//calculate paths
+		System.out.println("Converting past trips to paths...");
+	    paths = Paths.getInstance();
+	    paths.importPastTrips();
+	    System.out.println("Conversion successful.");
+	    longLine();
+	    
 		// define start and end stations
-		System.out.println("Parsing stations...");
+		System.out.println("Parsing stations from input...");
 		try {
 			start = stations.getStationByCode(startCode);
 		} catch (Exception e) {
@@ -70,13 +82,13 @@ public class BixiTrip {
 			return;
 		}
 		System.out.println("End station '" + end.getName() + "' found successfully.");
-		System.out.println("-----------------------------------------------------------");
+		longLine();
 
 		mainTrip = new Trip(start, end);
 		System.out.println("Finding best route from " + start.getName() + " to " + end.getName() + "...");
 		url = mainTrip.getUrl();
 		System.out.println();
-		//System.out.println("Your trip will take an estimated" + mainTrip.getDuration() + "minutes in total.");
+		System.out.println("Your trip will take an estimated" + mainTrip.getDuration() + "minutes in total.");
 		System.out.println("Here is your Google Maps trip URL:" + url);
 	}
 
