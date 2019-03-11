@@ -46,9 +46,9 @@ public class BixiTrip {
 		System.out.println("-----------------------------------------------------------");
 
 		// read data from files
-		stations = parseStations("stations\\Stations_2018.csv");
+		stations = Parser.parseStations("stations\\Stations_2018.csv");
 		System.out.println("Stations imported successfully.");
-		pastTrips = parsePastTrips("pastTrips");
+		pastTrips = Parser.parsePastTrips("pastTrips");
 		System.out.println("Data import successful.");
 		System.out.println("-----------------------------------------------------------");
 		System.out.println();
