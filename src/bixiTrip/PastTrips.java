@@ -1,7 +1,8 @@
 package bixiTrip;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
-import bixiTrip.PastTrip;
+import java.util.Locale;
 
 /**
  * Class that contains the access to different trips
@@ -55,6 +56,8 @@ public class PastTrips {
 			i++;
 		}
 		if (i >= (pastTrips.size() - 1) && nextTrips.size() < 1) {
+			System.out.println(NumberFormat.getNumberInstance(Locale.US).format(pastTrips.size())
+								+ " past trips parsed.");
 			return null;
 		}
 		return nextTrips;
