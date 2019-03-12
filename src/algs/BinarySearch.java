@@ -2,17 +2,7 @@ package algs;
 
 import java.util.ArrayList;
 
-/**
- * Implementation of Binary Search using code from Sedgewick & Wayne's
- * "Algorithms: Fourth Edition". Individual functions have been cited
- * appropriately.
- * 
- * @author Jonathan Janzen
- *
- */
-
-import java.util.Arrays;
-
+import bixiTrip.Path;
 import bixiTrip.Station;
 
 public class BinarySearch {
@@ -35,6 +25,21 @@ public class BinarySearch {
 			if (code < a.get(mid).getCode())
 				hi = mid - 1;
 			else if (code > a.get(mid).getCode())
+				lo = mid + 1;
+			else
+				return mid;
+		}
+		return -1;
+	}
+	
+	public static int pathSearch(ArrayList<Path> a, int code) {
+		int lo = 0;
+		int hi = a.size() - 1;
+		while (lo <= hi) {
+			int mid = lo + (hi - lo) / 2;
+			if (code < a.get(mid).getEndCode())
+				hi = mid - 1;
+			else if (code > a.get(mid).getEndCode())
 				lo = mid + 1;
 			else
 				return mid;

@@ -55,8 +55,7 @@ public class Paths {
 	 * @return Requested Path if it exists in Paths or null
 	 */
 	public Path getPath(int startCode, int endCode) {
-		return graph.getPath(stations.getIndex(startCode),
-				stations.getIndex(endCode));
+		return graph.getPath(startCode, endCode);
 	}
 
 	/**
@@ -65,9 +64,12 @@ public class Paths {
 	public void importPastTrips() {
 		PastTrips pastTrips = PastTrips.getInstance();
 
+		int i = 0;
 		ArrayList<PastTrip> nextPath;
 		while (true) {
+
 			nextPath = pastTrips.getNextPath();
+			System.out.println("Path " + i + " started.");
 			if (nextPath == null)
 				return;
 
@@ -80,6 +82,8 @@ public class Paths {
 				else
 					path.addPastTrip(pastTrip);
 			}
+			System.out.println("Path " + i + " done.");
+			i++;
 		}
 	}
 

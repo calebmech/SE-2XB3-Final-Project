@@ -3,6 +3,7 @@ package bixiTrip;
 import algs.Graph;
 import algs.Queue;
 import algs.SP;
+import algs.Stack;
 
 /**
  * Trip abstract data type that provides directions between two Stations
@@ -35,11 +36,14 @@ public class Trip {
 		this.stations = Stations.getInstance();
 		this.sp = new SP(graph, start.getCode());
 
-		Iterable<Path> pathSeq = sp.pathTo(stations.getIndex(end.getCode()));
+		Stack<Path> pathSeq = sp.pathTo(end.getCode());
 
-		pathSeq.forEach(path -> {
+		int i = pathSeq.size();
+		for (Path path : pathSeq) {
 			route.enqueue(stations.getStationByIndex(path.getStartIndex()));
-		});
+			if (--i == 0)
+				route.enqueue(stations.getStationByIndex(path.getEndIndex()));
+		}
 	}
 
 	/**

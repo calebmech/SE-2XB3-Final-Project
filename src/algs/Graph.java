@@ -1,18 +1,20 @@
 package algs;
 
+import java.util.ArrayList;
+
 import bixiTrip.Path;
 
 public class Graph {
 	private final int V;
 	private int E;
-	private Bag<Path>[] adj;
+	private ArrayList<Path>[] adj;
 
 	public Graph(int _V) {
-		this.V = _V;
+		this.V = 10003;
 		this.E = 0;
-		adj = (Bag<Path>[]) new Bag[V];
+		adj = (ArrayList<Path>[]) new ArrayList[V];
 		for (int v = 0; v < V; v++)
-			adj[v] = new Bag<Path>();
+			adj[v] = new ArrayList<Path>();
 	}
 
 	public int V() {
@@ -24,17 +26,15 @@ public class Graph {
 	}
 
 	public void addPath(Path p) {
-		adj[p.getStartIndex()].add(p);
+		adj[p.getStartCode()].add(p);
 		E++;
 	}
 	
 	public Path getPath(int startIndex, int endIndex) {
-		for (Path p : adj[startIndex]) {
-			if (p.getEndIndex() == endIndex) {
-				return p;
-			}
-		}
-		return null;
+		int i = BinarySearch.pathSearch(adj[startIndex], endIndex);
+		if (i == - 1)
+			return null;
+		return adj[startIndex].get(i);
 	}
 	
 	public Iterable<Path> adj(int v) {
@@ -42,7 +42,7 @@ public class Graph {
 	}
 	
 	public Iterable<Path> edges() {
-		Bag<Path> bag = new Bag<Path>();
+		ArrayList<Path> bag = new ArrayList<Path>();
 		for (int v = 0; v < V; v++)
 			for (Path p : adj[v])
 				bag.add(p);
