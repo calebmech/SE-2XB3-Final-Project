@@ -35,6 +35,8 @@ public class Parser {
 		for (File file : listOfFiles) {
 			if (file.isFile()) {
 				try {
+					if (file == listOfFiles[0])
+						System.out.print("Importing ");
 					System.out.print(file.getName() + (file == listOfFiles[listOfFiles.length - 1] ? ". " : ", "));
 					Scanner input = new Scanner(file);
 					if (input.hasNextLine())

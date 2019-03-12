@@ -51,11 +51,23 @@ public class BixiTrip {
 		longLine();
 
 		// read data from files
-		stations = Parser.parseStations("stations\\Stations_2018.csv");
+		try {
+			stations = Parser.parseStations("stations\\Stations_2018.csv");
+		} catch (Exception e) {
+			System.out.println("Stations file could not be found. Please correct the file path and try again.");
+			return;
+		}
 		System.out.println("Stations imported successfully.");
+		
+		//import past trips
 		System.out.println("Importing past trips...");
-		System.out.print("Importing ");
-		pastTrips = Parser.parsePastTrips("pastTrips");
+		try {
+			pastTrips = Parser.parsePastTrips("pastTrips");
+		} catch (Exception e) {
+			longLine();
+			System.out.println("An unexpected parsing error occurred. Please correct the directory and try again.");
+			return;
+		}
 		System.out.println();
 		System.out.println("Past trips imported successfully.");
 		System.out.println("Data import successful.");
@@ -83,7 +95,12 @@ public class BixiTrip {
 		// calculate paths
 		System.out.println("Converting past trips to paths...");
 		paths = Paths.getInstance();
-		paths.importPastTrips();
+		try {
+			paths.importPastTrips();
+		} catch (Exception e) {
+			System.out.println("An error occured during import. Please try again.");
+			return;
+		}
 		System.out.println("Conversion successful.");
 		longLine();
 
