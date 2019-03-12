@@ -69,7 +69,6 @@ public class Paths {
 		while (true) {
 
 			nextPath = pastTrips.getNextPath();
-			System.out.println("Path " + i + " started.");
 			if (nextPath == null)
 				return;
 
@@ -82,7 +81,6 @@ public class Paths {
 				else
 					path.addPastTrip(pastTrip);
 			}
-			System.out.println("Path " + i + " done.");
 			i++;
 		}
 	}
