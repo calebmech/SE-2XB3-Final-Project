@@ -8,11 +8,11 @@ package bixiTrip;
  */
 
 public class BixiTrip {
-	
+
 	private static void longLine() {
 		System.out.println("-----------------------------------------------------------");
 	}
-	
+
 	/**
 	 * Main function for BixiTrip.
 	 * 
@@ -58,13 +58,6 @@ public class BixiTrip {
 		System.out.println("Data import successful.");
 		longLine();
 
-		//calculate paths
-		System.out.println("Converting past trips to paths...");
-	    paths = Paths.getInstance();
-	    paths.importPastTrips();
-	    System.out.println("Conversion successful.");
-	    longLine();
-	    
 		// define start and end stations
 		System.out.println("Parsing stations from input...");
 		try {
@@ -82,6 +75,13 @@ public class BixiTrip {
 			return;
 		}
 		System.out.println("End station '" + end.getName() + "' found successfully.");
+		longLine();
+
+		// calculate paths
+		System.out.println("Converting past trips to paths...");
+		paths = Paths.getInstance();
+		paths.importPastTrips();
+		System.out.println("Conversion successful.");
 		longLine();
 
 		mainTrip = new Trip(start, end);
