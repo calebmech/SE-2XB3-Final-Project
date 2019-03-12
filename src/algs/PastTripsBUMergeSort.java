@@ -13,7 +13,7 @@ import bixiTrip.PastTrip;
 
 public class PastTripsBUMergeSort {
 
-	private static Comparable[] aux;
+	private static PastTrip[] aux;
 
 	/**
 	 * Function that compares the two values in the array This is found in the
@@ -43,13 +43,13 @@ public class PastTripsBUMergeSort {
 			aux[k] = a.get(k);
 		for (int k = lo; k <= hi; k++)
 			if (i > mid)
-				a.set(k, (PastTrip) aux[j++]);
+				a.set(k, aux[j++]);
 			else if (j > hi)
-				a.set(k, (PastTrip) aux[i++]);
+				a.set(k, aux[i++]);
 			else if (less(aux[j], aux[i]))
-				a.set(k, (PastTrip) aux[j++]);
+				a.set(k, aux[j++]);
 			else
-				a.set(k, (PastTrip) aux[i++]);
+				a.set(k, aux[i++]);
 	}
 
 	/**
@@ -60,7 +60,7 @@ public class PastTripsBUMergeSort {
 	 */
 	public static void sort(ArrayList<PastTrip> a) {
 		int n = a.size();
-		aux = new Comparable[n];
+		aux = new PastTrip[n];
 		for (int sz = 1; sz < n; sz = sz + sz) {
 			for (int lo = 0; lo < n - sz; lo += sz + sz) {
 				merge(a, lo, lo + sz - 1, Math.min(lo + sz + sz - 1, n - 1));

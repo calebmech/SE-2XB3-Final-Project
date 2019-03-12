@@ -42,9 +42,10 @@ public class PastTrips {
 		ArrayList<PastTrip> nextTrips = new ArrayList<PastTrip>();
 		sortPastTrips();
 		for (PastTrip i : pastTrips) {
-			
-			nextTrips.add(i);
-			pastTrips.remove(i);
+			if(bixiTrip.PastTrip.compareTo(i++) == 0) {
+				nextTrips.add(i);
+				pastTrips.remove(i);
+			}
 		}
 			
 		return nextTrips;
