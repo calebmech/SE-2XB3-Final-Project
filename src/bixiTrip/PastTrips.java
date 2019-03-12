@@ -54,7 +54,7 @@ public class PastTrips {
 			nextTrips.add(pastTrips.get(i));;
 			i++;
 		}
-		if (i >= (pastTrips.size() -1)) {
+		if (i >= (pastTrips.size() - 1) && nextTrips.size() < 1) {
 			return null;
 		}
 		return nextTrips;
