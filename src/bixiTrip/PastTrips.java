@@ -48,7 +48,7 @@ public class PastTrips {
 		}
 		int start = pastTrips.get(0).getStartCode();
 		int end = pastTrips.get(0).getEndCode();
-		int i = 1;
+		int i = 0;
 		while (i < pastTrips.size()) {
 			int next_start = pastTrips.get(i).getStartCode();
 			int next_end = pastTrips.get(i).getEndCode();
