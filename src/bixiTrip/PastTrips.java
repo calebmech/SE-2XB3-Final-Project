@@ -46,6 +46,9 @@ public class PastTrips {
 		if (!isSorted) {
 			sortPastTrips();
 		}
+		if (pastTrips.isEmpty()) {
+			return null;
+		}
 		int start = pastTrips.get(0).getStartCode();
 		int end = pastTrips.get(0).getEndCode();
 		int i = 0;
