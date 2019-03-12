@@ -12,6 +12,7 @@ public class PastTrips {
 
 	private static PastTrips instance = null;
 	private ArrayList<PastTrip> pastTrips = new ArrayList<PastTrip>();
+	public ArrayList<PastTrip> nextTrips = new ArrayList<PastTrip>();
 
 	/**
 	 * Function that constructs a singleton PastTrips()
@@ -41,8 +42,12 @@ public class PastTrips {
 	public ArrayList<PastTrip> getNextPath() {
 		sortPastTrips();
 		getInstance();
-		//pastTrips = pastTrips.remove(instance);
-		return pastTrips;
+		for (PastTrip i : pastTrips) {
+			nextTrips.add(i);
+			pastTrips.remove(i);
+		}
+			
+		return nextTrips;
 	}
 
 	/**
