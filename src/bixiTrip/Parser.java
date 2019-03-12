@@ -35,7 +35,7 @@ public class Parser {
 		for (File file : listOfFiles) {
 			if (file.isFile()) {
 				try {
-					System.out.print(file.getName() + ", ");
+					System.out.print(file.getName() + (file == listOfFiles[listOfFiles.length - 1] ? ". " : ", "));
 					Scanner input = new Scanner(file);
 					if (input.hasNextLine())
 						input.nextLine();
