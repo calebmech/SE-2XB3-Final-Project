@@ -52,18 +52,11 @@ public class PastTrips {
 		int start = pastTrips.get(0).getStartCode();
 		int end = pastTrips.get(0).getEndCode();
 		int i = 0;
-		while (i < pastTrips.size()) {
-			int next_start = pastTrips.get(i).getStartCode();
-			int next_end = pastTrips.get(i).getEndCode();
-			if (start == next_start) {
-				if (end == next_end) {
-					nextTrips.addAll(i, pastTrips);
-					pastTrips.remove(i);
-				}
-			}
+		while (start == pastTrips.get(i).getStartCode() && end == pastTrips.get(i).getEndCode()) {
+			nextTrips.add(i, pastTrips.get(i));;
+			pastTrips.remove(i);
 			i++;
 		}
-
 		return nextTrips;
 	}
 
