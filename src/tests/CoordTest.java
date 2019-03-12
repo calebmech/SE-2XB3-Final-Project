@@ -15,7 +15,7 @@ import org.junit.Test;
 import bixiTrip.Coord;
 import bixiTrip.Station;
 
-public class testCoord {
+public class CoordTest {
 	// create some test objects
 		Coord coord1 = new Coord(43.2609, -79.9192);
 		Coord coord2 = new Coord(-20.2984, 0.5748);
