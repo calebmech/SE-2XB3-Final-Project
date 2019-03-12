@@ -53,7 +53,10 @@ public class BixiTrip {
 		// read data from files
 		stations = Parser.parseStations("stations\\Stations_2018.csv");
 		System.out.println("Stations imported successfully.");
+		System.out.println("Importing past trips...");
+		System.out.print("Importing ");
 		pastTrips = Parser.parsePastTrips("pastTrips");
+		System.out.println();
 		System.out.println("Past trips imported successfully.");
 		System.out.println("Data import successful.");
 		longLine();
