@@ -7,7 +7,7 @@ import java.util.Locale;
 /**
  * Class that contains the access to different trips
  * 
- * @author Matthew Braden
+ * @author Matthew Braden & Jonathan Janzen
  *
  */
 public class PastTrips {

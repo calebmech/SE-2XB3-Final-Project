@@ -8,7 +8,7 @@ import algs.Stack;
 /**
  * Trip abstract data type that provides directions between two Stations
  * 
- * @author Caleb Mech &amp; Jonathan Janzen
+ * @author Caleb Mech
  *
  */
 
