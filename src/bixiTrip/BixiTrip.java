@@ -88,8 +88,8 @@ public class BixiTrip {
 		System.out.println("Finding best route from " + start.getName() + " to " + end.getName() + "...");
 		url = mainTrip.getUrl();
 		System.out.println();
-		System.out.println("Your trip will take an estimated" + mainTrip.getDuration() + "minutes in total.");
-		System.out.println("Here is your Google Maps trip URL:" + url);
+		System.out.println("Your trip will take an estimated " + mainTrip.getDuration() + " minutes in total.");
+		System.out.println("Here is your Google Maps trip URL: " + url);
 	}
 
 }
