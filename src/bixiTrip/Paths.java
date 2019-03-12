@@ -1,5 +1,7 @@
 package bixiTrip;
 
+import java.util.ArrayList;
+
 import algs.Graph;
 
 /**
@@ -18,8 +20,8 @@ public class Paths {
 	/**
 	 * Getter for a singleton Paths object
 	 * 
-	 * @return Returns a single instance of the Paths object, whether one already
-	 *         exists or not
+	 * @return Returns a single instance of the Paths object, whether one
+	 *         already exists or not
 	 */
 	public static Paths getInstance() {
 		if (instance == null)
@@ -44,15 +46,17 @@ public class Paths {
 	public void addPath(Path path) {
 		graph.addPath(path);
 	}
-	
+
 	/**
 	 * Get a Path that's stored in the Paths object
-	 * @param startCode	Code of the Station where the Path starts
-	 * @param endCode	Code of the Station where the Path end
+	 * 
+	 * @param startCode Code of the Station where the Path starts
+	 * @param endCode   Code of the Station where the Path end
 	 * @return Requested Path if it exists in Paths or null
 	 */
 	public Path getPath(int startCode, int endCode) {
-		return graph.getPath(stations.getIndex(startCode), stations.getIndex(endCode));
+		return graph.getPath(stations.getIndex(startCode),
+				stations.getIndex(endCode));
 	}
 
 	/**
@@ -60,14 +64,22 @@ public class Paths {
 	 */
 	public void importPastTrips() {
 		PastTrips pastTrips = PastTrips.getInstance();
-		
-		for (PastTrip pastTrip : pastTrips.getNextPath()) {
-			Path path = getPath(pastTrip.getStartCode(), pastTrip.getEndCode());
 
-			if (path == null)
-				addPath(new Path(pastTrip));
-			else
-				path.addPastTrip(pastTrip);
+		ArrayList<PastTrip> nextPath;
+		while (true) {
+			nextPath = pastTrips.getNextPath();
+			if (nextPath == null)
+				return;
+
+			for (PastTrip pastTrip : nextPath) {
+				Path path = getPath(pastTrip.getStartCode(),
+						pastTrip.getEndCode());
+
+				if (path == null)
+					addPath(new Path(pastTrip));
+				else
+					path.addPastTrip(pastTrip);
+			}
 		}
 	}
 
