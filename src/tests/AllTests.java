@@ -9,7 +9,8 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ PastTripTest.class, PathTest.class, StationsTest.class, StationTest.class })
+@SuiteClasses({ CoordTest.class, PastTripTest.class, PathsTest.class, PathTest.class, StationTest.class,
+		StationsTest.class, TripTest.class })
 public class AllTests {
 
 }
