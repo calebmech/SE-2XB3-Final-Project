@@ -16,11 +16,12 @@ public class Coord {
 	 * 
 	 * The values of Latitudes and Longitudes are in Degrees.
 	 * 
-	 * +ve Longitude values mean the number of degrees east of the Prime Meridian & west for -ve values.
-	 * +ve Latitude values mean the number of degrees north of the Equator and south for -ve values.
+	 * +ve Longitude values mean the number of degrees east of the Prime Meridian &
+	 * west for -ve values. +ve Latitude values mean the number of degrees north of
+	 * the Equator and south for -ve values.
 	 * 
 	 * @param _long Longitude of coordinate
-	 * @param _lat Latitude of coordinate
+	 * @param _lat  Latitude of coordinate
 	 */
 	public Coord(double _lat, double _long) {
 		this.longitude = _long;
@@ -44,7 +45,7 @@ public class Coord {
 	public double getLat() {
 		return latitude;
 	}
-	
+
 	/**
 	 * Converts coordinate to string
 	 * 

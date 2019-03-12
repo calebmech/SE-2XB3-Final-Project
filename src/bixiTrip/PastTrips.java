@@ -50,14 +50,15 @@ public class PastTrips {
 		}
 		int start = pastTrips.get(i).getStartCode();
 		int end = pastTrips.get(i).getEndCode();
-		while (start == pastTrips.get(i).getStartCode() && 
-			   end == pastTrips.get(i).getEndCode() && i < (pastTrips.size() - 1)) {
-			nextTrips.add(pastTrips.get(i));;
+		while (start == pastTrips.get(i).getStartCode() && end == pastTrips.get(i).getEndCode()
+				&& i < (pastTrips.size() - 1)) {
+			nextTrips.add(pastTrips.get(i));
+			;
 			i++;
 		}
 		if (i >= (pastTrips.size() - 1) && nextTrips.size() < 1) {
-			System.out.println(NumberFormat.getNumberInstance(Locale.US).format(pastTrips.size())
-								+ " past trips parsed.");
+			System.out.println(
+					NumberFormat.getNumberInstance(Locale.US).format(pastTrips.size()) + " past trips parsed.");
 			return null;
 		}
 		return nextTrips;
@@ -72,8 +73,8 @@ public class PastTrips {
 		pastTrips.add(trip);
 		isSorted = false;
 	}
-	
-	/** 
+
+	/**
 	 * Function to move the count variable back to the first index.
 	 */
 	public void initialize() {

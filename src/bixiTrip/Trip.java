@@ -38,9 +38,9 @@ public class Trip {
 
 		if (!sp.hasPathTo(end.getCode()))
 			throw new IllegalArgumentException("Stations are not connected.");
-		
+
 		Stack<Path> pathSeq = sp.pathTo(end.getCode());
-		
+
 		int i = pathSeq.size();
 		for (Path path : pathSeq) {
 			route.enqueue(stations.getStationByIndex(path.getStartIndex()));

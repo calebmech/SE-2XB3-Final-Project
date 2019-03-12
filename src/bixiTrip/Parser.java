@@ -51,8 +51,7 @@ public class Parser {
 						int duration = Integer.parseInt(tempArray[4]);
 
 						// Add a past trip to past trips object
-						pastTrips.addTrip(new PastTrip(startStation, endStation,
-								duration));
+						pastTrips.addTrip(new PastTrip(startStation, endStation, duration));
 
 					}
 					input.close();

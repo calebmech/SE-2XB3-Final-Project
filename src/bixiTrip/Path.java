@@ -30,10 +30,8 @@ public class Path extends PastTrip {
 	 * @param trip PastTrip object with the same start and end.
 	 */
 	public void addPastTrip(PastTrip trip) {
-		if (trip.getStartCode() != getStartCode()
-				|| trip.getEndCode() != getEndCode())
-			throw new IllegalArgumentException(
-					"PastTrip's are not between the same stations.");
+		if (trip.getStartCode() != getStartCode() || trip.getEndCode() != getEndCode())
+			throw new IllegalArgumentException("PastTrip's are not between the same stations.");
 
 		duration = (duration * count + trip.getDuration()) / (count + 1);
 		count++;
