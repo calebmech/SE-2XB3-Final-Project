@@ -23,7 +23,7 @@ public class SP {
 
 	private void relax(Graph G, int v) {
 		for (Path p : G.adj(v)) {
-			int w = p.getEndIndex();
+			int w = p.getEndCode();
 			if (distTo[w] > distTo[v] + p.getDuration()) {
 				distTo[w] = distTo[v] + p.getDuration();
 				pathTo[w] = p;
