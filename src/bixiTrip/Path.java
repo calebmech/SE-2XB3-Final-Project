@@ -15,7 +15,7 @@ public class Path extends PastTrip {
 	/**
 	 * Constructor for a new Path object.
 	 * 
-	 * @param _trip	PastTrip object to base the Path on.
+	 * @param _trip PastTrip object to base the Path on.
 	 */
 	public Path(PastTrip _trip) {
 		super(_trip.getStartCode(), _trip.getEndCode(), 0);
@@ -25,16 +25,20 @@ public class Path extends PastTrip {
 	}
 
 	/**
-	 * Recalculate the average duration for the Path
-	 * by adding another PastTrip.
+	 * Recalculate the average duration for the Path by adding another PastTrip.
 	 * 
 	 * @param trip PastTrip object with the same start and end.
 	 */
 	public void addPastTrip(PastTrip trip) {
+		if (trip.getStartCode() != getStartCode()
+				|| trip.getEndCode() != getEndCode())
+			throw new IllegalArgumentException(
+					"PastTrip's are not between the same stations.");
+
 		duration = (duration * count + trip.getDuration()) / (count + 1);
 		count++;
 	}
-	
+
 	/**
 	 * Getter for the index of the start station in the Stations object.
 	 * 
@@ -43,14 +47,14 @@ public class Path extends PastTrip {
 	public int getStartIndex() {
 		return stations.getIndex(startCode);
 	}
-	
+
 	/**
 	 * Getter for the index of the end station in the Stations object.
 	 * 
 	 * @return Returns end station index as an int.
 	 */
 	public int getEndIndex() {
-		return stations.getIndex(startCode);
+		return stations.getIndex(endCode);
 	}
 
 	/**
