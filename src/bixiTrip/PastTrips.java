@@ -72,4 +72,11 @@ public class PastTrips {
 		pastTrips.add(trip);
 		isSorted = false;
 	}
+	
+	/** 
+	 * Function to move the count variable back to the first index.
+	 */
+	public void initialize() {
+		i = 0;
+	}
 }
