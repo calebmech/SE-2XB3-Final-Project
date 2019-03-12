@@ -5,8 +5,7 @@ import algs.Queue;
 import algs.SP;
 
 /**
- * Trip abstract data type that provides directions
- * between two Stations
+ * Trip abstract data type that provides directions between two Stations
  * 
  * @author Caleb Mech &amp; Jonathan Janzen
  *
@@ -16,25 +15,27 @@ public class Trip {
 	private Station start;
 	private Station end;
 	private Queue<Station> route;
+	private Stations stations;
 	private SP sp;
 
 	/**
 	 * Constructor for Trip object
 	 * 
-	 * @param _start 	Code of Station to start from
-	 * @param _end		Code of Station to end at
+	 * @param _start Code of Station to start from
+	 * @param _end   Code of Station to end at
 	 */
 	public Trip(Station _start, Station _end) {
 		this.start = _start;
 		this.end = _end;
 		this.route = new Queue<Station>();
-		
+
 		Paths paths = Paths.getInstance();
 		Graph graph = paths.getGraph();
-		Stations stations = Stations.getInstance();
 
+		this.stations = Stations.getInstance();
 		this.sp = new SP(graph, start.getCode());
-		Iterable<Path> pathSeq = sp.pathTo(end.getCode());
+
+		Iterable<Path> pathSeq = sp.pathTo(stations.getIndex(end.getCode()));
 
 		pathSeq.forEach(path -> {
 			route.enqueue(stations.getStationByIndex(path.getStartIndex()));
@@ -49,16 +50,16 @@ public class Trip {
 	public Iterable<Station> getRoute() {
 		return route;
 	}
-	
+
 	/**
 	 * Getter for duration of trip
 	 * 
 	 * @return Returns number of seconds a trip should take as an int
 	 */
 	public int getDuration() {
-		return (int) Math.round(sp.distTo(end.getCode()));
+		return (int) Math.round(sp.distTo(stations.getIndex(end.getCode())));
 	}
-	
+
 	/**
 	 * Get URL for directions to travel a route
 	 * 
@@ -69,7 +70,7 @@ public class Trip {
 		url += "&origin=" + route.dequeue().getCoords().toString();
 		url += "&waypoints=";
 		while (route.size() > 1) {
-			url += route.dequeue().getCoords().toString() + "|"; 
+			url += route.dequeue().getCoords().toString() + "|";
 		}
 		url += "&destination=" + route.dequeue().getCoords().toString();
 		url += "&travelmode=bicycling";
