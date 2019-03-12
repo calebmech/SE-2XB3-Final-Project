@@ -14,7 +14,8 @@ public class PastTrips {
 	private static PastTrips instance = null;
 	private boolean isSorted = true;
 	private ArrayList<PastTrip> pastTrips = new ArrayList<PastTrip>();
-
+	private int i = 0;
+	
 	/**
 	 * Function that constructs a singleton PastTrips()
 	 * 
@@ -49,12 +50,10 @@ public class PastTrips {
 		if (pastTrips.isEmpty()) {
 			return null;
 		}
-		int start = pastTrips.get(0).getStartCode();
-		int end = pastTrips.get(0).getEndCode();
-		int i = 0;
+		int start = pastTrips.get(i).getStartCode();
+		int end = pastTrips.get(i).getEndCode();
 		while (start == pastTrips.get(i).getStartCode() && end == pastTrips.get(i).getEndCode()) {
 			nextTrips.add(i, pastTrips.get(i));;
-			pastTrips.remove(i);
 			i++;
 		}
 		return nextTrips;
