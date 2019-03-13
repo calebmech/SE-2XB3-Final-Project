@@ -39,7 +39,8 @@ public class PastTrips {
 
 	/**
 	 * 
-	 * Function that returns a next list of past trips between two stations
+	 * Function that returns the next list of past trips between two shared stations. For example, an
+	 * ArrayList of all past trips that have the same start and end station.
 	 * 
 	 * @return List of past trips
 	 */
@@ -53,7 +54,6 @@ public class PastTrips {
 		while (start == pastTrips.get(i).getStartCode() && end == pastTrips.get(i).getEndCode()
 				&& i < (pastTrips.size() - 1)) {
 			nextTrips.add(pastTrips.get(i));
-			;
 			i++;
 		}
 		if (i >= (pastTrips.size() - 1) && nextTrips.size() < 1) {
