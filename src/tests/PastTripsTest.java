@@ -24,7 +24,7 @@ public class PastTripsTest {
 
 	@Test
 	public void testGetNextPath() {
-		
+		assert pastTrips.getNextPath() == test1;
 	}
 
 }
