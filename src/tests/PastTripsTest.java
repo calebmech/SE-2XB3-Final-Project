@@ -30,18 +30,9 @@ public class PastTripsTest {
 	}
 
 	@Test
-	public void testAddTrip() {
-		fail("Not yet implemented");
-	}
-
-	@Test
 	public void testGetNextPath() {
-		assert pastTrips.getNextPath() == [500,1000,180];
+		PastTrip test1 = new PastTrip(500, 1000, 180);
+		assert pastTrips.getNextPath().equals(test1);
 	}
 
-	@Test
-	public void testInitialize() {
-		fail("Not yet implemented");
-		
-	}
 }
