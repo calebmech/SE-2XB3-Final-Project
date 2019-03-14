@@ -12,7 +12,8 @@ import bixiTrip.PastTrip;
 public class PastTripsTest {
 
 	PastTrips pastTrips = new PastTrips();
-
+	PastTrips newTrips2 = new PastTrips();
+	
 	@Before
 	public void setUp() throws Exception {
 		pastTrips = new PastTrips();
@@ -25,11 +26,10 @@ public class PastTripsTest {
 	}
 
 	@Test
-	public void testGetNextPath() {
-		ArrayList<PastTrip> newPath = new ArrayList<PastTrip>();
+	public void testGetNextPathAndAddTrip() {
+		ArrayList<PastTrip> newTrip = new ArrayList<PastTrip>();
 		PastTrip test1 = new PastTrip(500, 1000, 180);
-		newPath.add(test1);
-		assert pastTrips.getNextPath() == newPath;
+		newTrip.add(test1);
+		assert pastTrips.getNextPath() == newTrip;
 	}
-
 }
