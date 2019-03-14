@@ -2,7 +2,7 @@ package tests;
 
 import org.junit.Test;
 
-import static org.junit.Assert.fail;
+import java.util.ArrayList;
 
 import org.junit.Before;
 
@@ -25,14 +25,11 @@ public class PastTripsTest {
 	}
 
 	@Test
-	public void testGetInstance() {
-		fail("Not yet implemented");
-	}
-
-	@Test
 	public void testGetNextPath() {
+		ArrayList<PastTrip> newPath = new ArrayList<PastTrip>();
 		PastTrip test1 = new PastTrip(500, 1000, 180);
-		assert pastTrips.getNextPath().equals(test1);
+		newPath.add(test1);
+		assert pastTrips.getNextPath() == newPath;
 	}
 
 }
