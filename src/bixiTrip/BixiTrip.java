@@ -1,5 +1,8 @@
 package bixiTrip;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+
 /**
  * The main implementation of BixiTrip.
  * 
@@ -23,8 +26,9 @@ public class BixiTrip {
 		Station start, end;
 		Integer startCode, endCode;
 		Trip mainTrip;
-		String url;
+		String url, stationPath, pastTripsPath;
 		Paths paths;
+		File stationFile, pastTripsDir;
 
 		// read input codes
 		try {
@@ -49,20 +53,24 @@ public class BixiTrip {
 
 		System.out.println("Welcome to BixiTrip. Please wait while we import our data...");
 		longLine();
-
+		
+		stationPath = "stations\\\\Stations_2018.csv";
+		stationFile = new File(stationPath);
 		// read data from files
-		try {
-			stations = Parser.parseStations("stations\\Stations_2018.csv");
-		} catch (Exception e) {
-			System.out.println("Stations file could not be found. Please correct the file path and try again.");
+	    if (!stationFile.exists()) {
+	    	System.out.println("Stations file could not be found. Please correct the file path and try again.");
 			return;
 		}
+		stations = Parser.parseStations(stationPath);
 		System.out.println("Stations imported successfully.");
 		
 		//import past trips
 		System.out.println("Importing past trips...");
+		
+		pastTripsPath = "pastTrips";
+		pastTripsDir = new File(pastTripsPath);
 		try {
-			pastTrips = Parser.parsePastTrips("pastTrips");
+			pastTrips = Parser.parsePastTrips(pastTripsPath);
 		} catch (Exception e) {
 			longLine();
 			System.out.println("An unexpected parsing error occurred. Please correct the directory and try again.");
