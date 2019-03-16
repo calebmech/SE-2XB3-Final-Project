@@ -39,6 +39,7 @@ public class BixiTripUI extends JFrame {
 	private Boolean isParsed = false;
 	private JProgressBar progressBar = new JProgressBar();
 	private JButton directionsButton = new JButton("Get Directions");
+
 	/**
 	 * Launch the application.
 	 */
@@ -98,28 +99,32 @@ public class BixiTripUI extends JFrame {
 		endStationComboBox.setBounds(176, 115, 404, 38);
 		contentPane.add(endStationComboBox);
 
-		//JProgressBar progressBar = new JProgressBar();
+		// JProgressBar progressBar = new JProgressBar();
 		progressBar.setBounds(12, 217, 568, 14);
 		contentPane.add(progressBar);
 
-		//JButton directionsButton = new JButton("Get Directions");
+		// JButton directionsButton = new JButton("Get Directions");
 		directionsButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String pastTripsPath;
-				File pastTripsDir;
-				PastTrips pastTrips;
+				Stations stations = Stations.getInstance();
 				Station start, end;
 				Integer startCode, endCode;
 				Trip mainTrip;
-
-				pastTrips = new PastTrips();
-				pastTrips = pastTrips.getInstance();
 
 				if (startStationComboBox.getSelectedItem() == "" || endStationComboBox.getSelectedItem() == "") {
 					statusField.setForeground(new Color(255, 0, 0));
 					statusField.setText("One or more selections is incorrect. Please select a start and end station.");
 					return;
 				}
+
+				start = stations.getStationByIndex(startStationComboBox.getSelectedIndex() - 1);
+				end = stations.getStationByIndex(endStationComboBox.getSelectedIndex() - 1);
+				mainTrip = new Trip(start, end);
+				String url = mainTrip.getUrl();
+				statusField.setForeground(new Color(0, 0, 0));
+				statusField.setText("Trip from " + start.getName() + " to " + end.getName() + " found.");
+				System.out.println(url);
+				return;
 			}
 		});
 		directionsButton.setEnabled(false);
@@ -127,7 +132,7 @@ public class BixiTripUI extends JFrame {
 		directionsButton.setBounds(199, 166, 200, 38);
 		contentPane.add(directionsButton);
 
-		//statusField = new JTextField();
+		// statusField = new JTextField();
 		statusField.setEditable(false);
 		statusField.setHorizontalAlignment(SwingConstants.CENTER);
 		statusField.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -137,7 +142,6 @@ public class BixiTripUI extends JFrame {
 
 		// start general main implementation
 		String url, stationPath = "stations\\stations_2018.csv", pastTripsPath = "pastTrips";
-		Paths paths;
 		File stationFile, pastTripsDir;
 
 		// initialize PastTrips and Stations abstract objects
@@ -166,10 +170,12 @@ public class BixiTripUI extends JFrame {
 		endStationComboBox.setEnabled(true);
 
 		// parse data in background
-		progressBar.setIndeterminate(true);
 		parse();
 	}
 
+	/**
+	 * Background task for parsing input data and updating UI accordingly.
+	 */
 	public void parse() {
 		SwingWorker<Boolean, String> worker = new SwingWorker<Boolean, String>() {
 			// @Override
@@ -178,9 +184,12 @@ public class BixiTripUI extends JFrame {
 				File pastTripsDir;
 				PastTrips pastTrips = new PastTrips();
 				pastTrips = pastTrips.getInstance();
+				Paths paths = Paths.getInstance();
 
+				// import pastTrips and add them to object
 				pastTripsPath = "pastTrips";
 				pastTripsDir = new File(pastTripsPath);
+				progressBar.setIndeterminate(true);
 				try {
 					pastTrips = Parser.parsePastTrips(pastTripsPath);
 					isParsed = true;
@@ -190,10 +199,21 @@ public class BixiTripUI extends JFrame {
 							"Past trips directory couldn't be found. Please correct the file path and try again.");
 					return false;
 				}
+
+				// calculate paths
+				try {
+					paths.importPastTrips();
+				} catch (Exception e) {
+					statusField.setForeground(new Color(255, 0, 0));
+					statusField.setText("An error occurred during the path conversion. Please try again.");
+					return false;
+				}
+
+				// update UI to show completion
 				progressBar.setIndeterminate(false);
 				directionsButton.setEnabled(true);
 				statusField.setForeground(new Color(0, 0, 0));
-				statusField.setText("Imported successfully. Direction finding enabled.");
+				statusField.setText("Imported successfully. Directions enabled.");
 				return true;
 			}
 		};
