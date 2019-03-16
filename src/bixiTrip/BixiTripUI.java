@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.SwingWorker;
+import javax.swing.UIManager;
 
 import java.awt.Color;
 import java.awt.Desktop;
@@ -38,12 +39,13 @@ public class BixiTripUI extends JFrame {
 	private JTextField statusField = new JTextField();
 	private JProgressBar progressBar = new JProgressBar();
 	private JButton directionsButton = new JButton("Get Directions");
-	private Color bixiRed = new Color(213, 43, 30), error = new Color(255, 0, 0);
+	private static Color bixiRed = new Color(213, 43, 30), error = new Color(255, 0, 0);
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		javax.swing.UIManager.put("ProgressBar.selectionBackground", Color.black);
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -207,9 +209,13 @@ public class BixiTripUI extends JFrame {
 				pastTripsPath = "pastTrips";
 				pastTripsDir = new File(pastTripsPath);
 				progressBar.setIndeterminate(true);
+				progressBar.setStringPainted(true);
 				try {
+					progressBar.setString("Parsing past trips...");
 					pastTrips = Parser.parsePastTrips(pastTripsPath);
 				} catch (Exception f) {
+					progressBar.setStringPainted(false);
+					progressBar.setIndeterminate(false);
 					statusField.setForeground(error);
 					statusField.setText(
 							"Past trips directory couldn't be found. Please correct the file path and try again.");
@@ -218,8 +224,11 @@ public class BixiTripUI extends JFrame {
 
 				// calculate paths
 				try {
+					progressBar.setString("Creating paths...");
 					paths.importPastTrips();
 				} catch (Exception e) {
+					progressBar.setStringPainted(false);
+					progressBar.setIndeterminate(false);
 					statusField.setForeground(error);
 					statusField.setText("An error occurred during the path conversion. Please try again.");
 					return false;
@@ -227,6 +236,8 @@ public class BixiTripUI extends JFrame {
 
 				// update UI to show completion
 				progressBar.setIndeterminate(false);
+				progressBar.setString("");
+				progressBar.setStringPainted(false);
 				directionsButton.setEnabled(true);
 				statusField.setForeground(new Color(0, 0, 0));
 				statusField.setText("Imported successfully. Directions enabled.");
