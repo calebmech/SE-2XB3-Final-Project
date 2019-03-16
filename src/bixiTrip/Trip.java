@@ -77,7 +77,7 @@ public class Trip {
 		url += "&origin=" + route.dequeue().getCoords().toString();
 		url += "&waypoints=";
 		while (route.size() > 1) {
-			url += route.dequeue().getCoords().toString() + "|";
+			url += route.dequeue().getCoords().toString() + "%7C";
 		}
 		url += "&destination=" + route.dequeue().getCoords().toString();
 		url += "&travelmode=bicycling";
