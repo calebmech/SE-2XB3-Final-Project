@@ -41,7 +41,7 @@ public class BixiTripUI extends JFrame {
 	private Boolean isParsed = false;
 	private JProgressBar progressBar = new JProgressBar();
 	private JButton directionsButton = new JButton("Get Directions");
-	private Color bixiRed = new Color(213, 43, 30);
+	private Color bixiRed = new Color(213, 43, 30), error = new Color(255, 0, 0);
 
 	/**
 	 * Launch the application.
@@ -75,7 +75,7 @@ public class BixiTripUI extends JFrame {
 		contentPane.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("icons\\logo.png"));
+		lblNewLabel.setIcon(new ImageIcon("icons\\logo2.png"));
 		lblNewLabel.setForeground(new Color(255, 0, 0));
 		lblNewLabel.setBounds(2, 2, 590, 38);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -118,11 +118,17 @@ public class BixiTripUI extends JFrame {
 				Trip mainTrip;
 
 				if (startStationComboBox.getSelectedItem() == "" || endStationComboBox.getSelectedItem() == "") {
-					statusField.setForeground(new Color(255, 0, 0));
+					statusField.setForeground(error);
 					statusField.setText("One or more selections is incorrect. Please select a start and end station.");
 					return;
 				}
-
+				
+				if (startStationComboBox.getSelectedIndex() == endStationComboBox.getSelectedIndex()) {
+					statusField.setForeground(error);
+					statusField.setText("Start and Destination cannot be the same station.");
+					return;
+				}
+				
 				start = stations.getStationByIndex(startStationComboBox.getSelectedIndex() - 1);
 				end = stations.getStationByIndex(endStationComboBox.getSelectedIndex() - 1);
 				mainTrip = new Trip(start, end);
@@ -156,7 +162,7 @@ public class BixiTripUI extends JFrame {
 
 		stationFile = new File(stationPath);
 		if (!stationFile.exists()) {
-			statusField.setForeground(new Color(255, 0, 0));
+			statusField.setForeground(error);
 			statusField.setText("Stations file could not be found. Please correct the file path and try again.");
 			return;
 		}
@@ -200,7 +206,7 @@ public class BixiTripUI extends JFrame {
 					pastTrips = Parser.parsePastTrips(pastTripsPath);
 					isParsed = true;
 				} catch (Exception f) {
-					statusField.setForeground(new Color(255, 0, 0));
+					statusField.setForeground(error);
 					statusField.setText(
 							"Past trips directory couldn't be found. Please correct the file path and try again.");
 					return false;
@@ -210,7 +216,7 @@ public class BixiTripUI extends JFrame {
 				try {
 					paths.importPastTrips();
 				} catch (Exception e) {
-					statusField.setForeground(new Color(255, 0, 0));
+					statusField.setForeground(error);
 					statusField.setText("An error occurred during the path conversion. Please try again.");
 					return false;
 				}
