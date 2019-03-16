@@ -54,7 +54,7 @@ public class BixiTrip {
 		System.out.println("Welcome to BixiTrip. Please wait while we import our data...");
 		longLine();
 		
-		stationPath = "stations\\\\Stations_2018.csv";
+		stationPath = "stations\\stations_2018.csv";
 		stationFile = new File(stationPath);
 		// read data from files
 	    if (!stationFile.exists()) {
