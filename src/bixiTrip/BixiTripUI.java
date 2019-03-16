@@ -31,6 +31,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+import java.awt.Toolkit;
 
 public class BixiTripUI extends JFrame {
 
@@ -39,6 +41,7 @@ public class BixiTripUI extends JFrame {
 	private Boolean isParsed = false;
 	private JProgressBar progressBar = new JProgressBar();
 	private JButton directionsButton = new JButton("Get Directions");
+	private Color bixiRed = new Color(213, 43, 30);
 
 	/**
 	 * Launch the application.
@@ -60,6 +63,7 @@ public class BixiTripUI extends JFrame {
 	 * Create the frame.
 	 */
 	public BixiTripUI() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("icons\\runningIcon.png"));
 
 		setTitle("BixiTrip");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -70,7 +74,8 @@ public class BixiTripUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("BixiTrip");
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("icons\\logo.png"));
 		lblNewLabel.setForeground(new Color(255, 0, 0));
 		lblNewLabel.setBounds(2, 2, 590, 38);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -101,6 +106,7 @@ public class BixiTripUI extends JFrame {
 
 		// JProgressBar progressBar = new JProgressBar();
 		progressBar.setBounds(12, 217, 568, 14);
+		progressBar.setForeground(bixiRed);
 		contentPane.add(progressBar);
 
 		// JButton directionsButton = new JButton("Get Directions");
