@@ -1,10 +1,11 @@
 package bixiTrip;
 
+import java.awt.Desktop;
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.net.URI;
 
 /**
- * The main implementation of BixiTrip.
+ * The main implementation of BixiTrip in console.
  * 
  * @author Jonathan Janzen
  *
@@ -118,6 +119,14 @@ public class BixiTrip {
 		System.out.println();
 		System.out.println("Your trip will take an estimated " + mainTrip.getDuration() / 60 + " minutes in total.");
 		System.out.println("Here is your Google Maps trip URL: " + url);
+		if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+			try {
+				Desktop.getDesktop().browse(new URI(url));
+			} catch (Exception f) {
+				f.printStackTrace();
+				return;
+			}
+		}
 	}
 
 }
