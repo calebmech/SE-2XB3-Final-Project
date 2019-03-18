@@ -24,7 +24,7 @@ public class SP {
 	private void relax(Graph G, int v) {
 		for (Path p : G.adj(v)) {
 			int w = p.getEndCode();
-			if (distTo[w] > distTo[v] + p.getDuration()) {
+			if (distTo[w] > distTo[v] + p.getDuration() && p.getDuration() < (28 * 60)) {
 				distTo[w] = distTo[v] + p.getDuration();
 				pathTo[w] = p;
 				if (pq.contains(w))
