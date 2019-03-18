@@ -15,7 +15,6 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.SwingWorker;
-import javax.swing.UIManager;
 
 import java.awt.Color;
 import java.awt.Desktop;
@@ -40,6 +39,7 @@ public class BixiTripUI extends JFrame {
 	private JProgressBar progressBar = new JProgressBar();
 	private JButton directionsButton = new JButton("Get Directions");
 	private static Color bixiRed = new Color(213, 43, 30), error = new Color(255, 0, 0);
+	private ArrayList<Station> stationsList;
 
 	/**
 	 * Launch the application.
@@ -66,7 +66,7 @@ public class BixiTripUI extends JFrame {
 
 		setTitle("BixiTrip");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 610, 339);
+		setBounds(100, 100, 699, 339);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.menu);
 		contentPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -76,7 +76,7 @@ public class BixiTripUI extends JFrame {
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("icons\\logo2.png"));
 		lblNewLabel.setForeground(new Color(255, 0, 0));
-		lblNewLabel.setBounds(2, 2, 590, 38);
+		lblNewLabel.setBounds(2, 2, 679, 38);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 32));
 		contentPane.add(lblNewLabel);
@@ -84,7 +84,7 @@ public class BixiTripUI extends JFrame {
 		JComboBox startStationComboBox = new JComboBox();
 		startStationComboBox.setEnabled(false);
 		startStationComboBox.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		startStationComboBox.setBounds(176, 53, 404, 38);
+		startStationComboBox.setBounds(176, 53, 493, 38);
 		contentPane.add(startStationComboBox);
 
 		JLabel lblStartStation = new JLabel("Start Station:");
@@ -100,11 +100,11 @@ public class BixiTripUI extends JFrame {
 		JComboBox endStationComboBox = new JComboBox();
 		endStationComboBox.setEnabled(false);
 		endStationComboBox.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		endStationComboBox.setBounds(176, 115, 404, 38);
+		endStationComboBox.setBounds(176, 115, 493, 38);
 		contentPane.add(endStationComboBox);
 
 		// JProgressBar progressBar = new JProgressBar();
-		progressBar.setBounds(12, 217, 568, 14);
+		progressBar.setBounds(12, 217, 657, 14);
 		progressBar.setForeground(bixiRed);
 		contentPane.add(progressBar);
 
@@ -112,6 +112,7 @@ public class BixiTripUI extends JFrame {
 		directionsButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Stations stations = Stations.getInstance();
+				int startCode, endCode;
 				Station start, end;
 				Trip mainTrip;
 
@@ -120,21 +121,24 @@ public class BixiTripUI extends JFrame {
 					statusField.setText("One or more selections is incorrect. Please select a start and end station.");
 					return;
 				}
-				
+
 				if (startStationComboBox.getSelectedIndex() == endStationComboBox.getSelectedIndex()) {
 					statusField.setForeground(error);
 					statusField.setText("Start and Destination cannot be the same station.");
 					return;
 				}
-				
-				start = stations.getStationByIndex(startStationComboBox.getSelectedIndex() - 1);
-				end = stations.getStationByIndex(endStationComboBox.getSelectedIndex() - 1);
+
+				// find start and end code for stations
+				startCode = stationsList.get(startStationComboBox.getSelectedIndex() - 1).getCode();
+				start = stations.getStationByCode(startCode);
+				endCode = stationsList.get(endStationComboBox.getSelectedIndex() - 1).getCode();
+				end = stations.getStationByCode(endCode);
 				mainTrip = new Trip(start, end);
 				String url = mainTrip.getUrl();
-				statusField.setForeground(new Color(0, 0, 0));
+				statusField.setForeground(Color.black);
 				statusField.setText("Trip from " + start.getName() + " to " + end.getName() + " found.");
-				
-				//open URL in default browser
+
+				// open URL in default browser
 				if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
 					try {
 						Desktop.getDesktop().browse(new URI(url));
@@ -148,14 +152,14 @@ public class BixiTripUI extends JFrame {
 		});
 		directionsButton.setEnabled(false);
 		directionsButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		directionsButton.setBounds(199, 166, 200, 38);
+		directionsButton.setBounds(259, 166, 200, 38);
 		contentPane.add(directionsButton);
 
 		// statusField = new JTextField();
 		statusField.setEditable(false);
 		statusField.setHorizontalAlignment(SwingConstants.CENTER);
 		statusField.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		statusField.setBounds(12, 244, 568, 38);
+		statusField.setBounds(12, 244, 657, 38);
 		contentPane.add(statusField);
 		statusField.setColumns(10);
 
@@ -177,7 +181,7 @@ public class BixiTripUI extends JFrame {
 		statusField.setText("Welcome to BixiTrip! Please wait while we import our data.");
 
 		// populate combobox
-		ArrayList<Station> stationsList = stations.getStations();
+		stationsList = algs.StationsMergesort.sortByName(stations.getStations());
 
 		startStationComboBox.addItem("");
 		endStationComboBox.addItem("");
