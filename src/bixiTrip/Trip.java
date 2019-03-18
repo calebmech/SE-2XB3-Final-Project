@@ -64,7 +64,7 @@ public class Trip {
 	 * @return Returns number of seconds a trip should take as an int
 	 */
 	public int getDuration() {
-		return (int) Math.round(sp.distTo(stations.getIndex(end.getCode())));
+		return (int) Math.round(sp.distTo(end.getCode()));
 	}
 
 	/**
