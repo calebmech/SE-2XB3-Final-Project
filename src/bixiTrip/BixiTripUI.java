@@ -164,8 +164,8 @@ public class BixiTripUI extends JFrame {
 		statusField.setColumns(10);
 
 		// start general main implementation
-		String url, stationPath = "stations\\stations_2018.csv", pastTripsPath = "pastTrips";
-		File stationFile, pastTripsDir;
+		String stationPath = "stations\\stations_2018.csv", pastTripsPath = "pastTrips";
+		File stationFile;
 
 		// initialize PastTrips and Stations abstract objects
 		Stations stations = new Stations();
