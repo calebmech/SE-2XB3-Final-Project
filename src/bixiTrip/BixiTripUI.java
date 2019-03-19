@@ -62,6 +62,7 @@ public class BixiTripUI extends JFrame {
 	 * Create the frame.
 	 */
 	public BixiTripUI() {
+		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("icons\\runningIcon.png"));
 
 		setTitle("BixiTrip");
