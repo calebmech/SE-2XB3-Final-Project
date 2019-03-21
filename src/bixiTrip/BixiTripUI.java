@@ -1,8 +1,7 @@
 package bixiTrip;
 
 /** 
- * The main UI for BixiTrip. Likely requires WindowBuilder for Eclipse to be installed
- * in order to function properly.
+ * The main UI for BixiTrip.
  * 
  * @author Jonathan Janzen
  */
