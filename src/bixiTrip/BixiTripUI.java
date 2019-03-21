@@ -116,12 +116,14 @@ public class BixiTripUI extends JFrame {
 				Station start, end;
 				Trip mainTrip;
 
+				// check that two stations have been selected
 				if (startStationComboBox.getSelectedItem() == "" || endStationComboBox.getSelectedItem() == "") {
 					statusField.setForeground(error);
 					statusField.setText("One or more selections is incorrect. Please select a start and end station.");
 					return;
 				}
 
+				// check that each station is unique
 				if (startStationComboBox.getSelectedIndex() == endStationComboBox.getSelectedIndex()) {
 					statusField.setForeground(error);
 					statusField.setText("Start and Destination cannot be the same station.");
@@ -133,6 +135,8 @@ public class BixiTripUI extends JFrame {
 				start = stations.getStationByCode(startCode);
 				endCode = stationsList.get(endStationComboBox.getSelectedIndex() - 1).getCode();
 				end = stations.getStationByCode(endCode);
+
+				// create trip
 				mainTrip = new Trip(start, end);
 				String url = mainTrip.getUrl();
 				statusField.setForeground(Color.black);
@@ -163,7 +167,7 @@ public class BixiTripUI extends JFrame {
 		contentPane.add(statusField);
 		statusField.setColumns(10);
 
-		// start general main implementation
+		// start station import
 		String stationPath = "stations\\stations_2018.csv", pastTripsPath = "pastTrips";
 		File stationFile;
 
