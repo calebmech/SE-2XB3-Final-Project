@@ -39,8 +39,8 @@ public class BinarySearch {
 	 * implement searching on Stations based on an integer, in order to match the
 	 * API.
 	 * 
-	 * @param a    An arraylist of type Station to be searched.
-	 * @param code Station code in the arraylist
+	 * @param a    An arraylist of type Path to be searched.
+	 * @param code Path code in the arraylist
 	 * @return the mid value in the arraylist
 	 */
 	public static int pathSearch(ArrayList<Path> a, int code) {
