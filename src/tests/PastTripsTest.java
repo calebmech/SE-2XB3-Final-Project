@@ -31,18 +31,35 @@ public class PastTripsTest {
 	}
 
 	@Test
-	public void testGetNextPath() {
-		ArrayList<PastTrip> newTrip = new ArrayList<PastTrip>();
-		PastTrip test1 = new PastTrip(500, 1000, 180);
-		newTrip.add(test1);
-		assert pastTrips.getNextPath() == newTrip;
+	public void testGetNextPathStart() {
+		assert (pastTrips.getNextPath().get(0).getStartCode() == 500);
 	}
 	
 	@Test
-	public void testGetNextPath2() {
-		ArrayList<PastTrip> newTrip2 = new ArrayList<PastTrip>();
-		PastTrip test2 = new PastTrip(673, 539, 300);
-		newTrip2.add(test2);
-		assert pastTrips2.getNextPath() == newTrip2;
+	public void testGetNextPathStart2() {
+		pastTrips2.getNextPath();
+		assert (pastTrips2.getNextPath().get(0).getStartCode() == 673);
+	}
+	
+	@Test
+	public void testGetNextPathEnd() {
+		assert (pastTrips.getNextPath().get(0).getEndCode() == 1000);
+	}
+	
+	@Test
+	public void testGetNextPathEnd2() {
+		pastTrips2.getNextPath();
+		assert (pastTrips2.getNextPath().get(0).getEndCode() == 539);
+	}
+	
+	@Test
+	public void testGetNextPathDuration() {
+		assert (pastTrips.getNextPath().get(0).getDuration() == 180);
+	}
+	
+	@Test
+	public void testGetNextPathDuration2() {
+		pastTrips2.getNextPath();
+		assert (pastTrips2.getNextPath().get(0).getDuration() == 300);
 	}
 }
