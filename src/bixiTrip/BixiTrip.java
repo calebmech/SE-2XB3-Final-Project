@@ -1,10 +1,12 @@
 package bixiTrip;
 
+import java.awt.Desktop;
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.net.URI;
 
 /**
- * The main implementation of BixiTrip.
+ * The main implementation of BixiTrip in console. User must give start and end
+ * code as input arguments.
  * 
  * @author Jonathan Janzen
  *
@@ -53,20 +55,20 @@ public class BixiTrip {
 
 		System.out.println("Welcome to BixiTrip. Please wait while we import our data...");
 		longLine();
-		
+
 		stationPath = "stations\\stations_2018.csv";
 		stationFile = new File(stationPath);
 		// read data from files
-	    if (!stationFile.exists()) {
-	    	System.out.println("Stations file could not be found. Please correct the file path and try again.");
+		if (!stationFile.exists()) {
+			System.out.println("Stations file could not be found. Please correct the file path and try again.");
 			return;
 		}
 		stations = Parser.parseStations(stationPath);
 		System.out.println("Stations imported successfully.");
-		
-		//import past trips
+
+		// import past trips
 		System.out.println("Importing past trips...");
-		
+
 		pastTripsPath = "pastTrips";
 		pastTripsDir = new File(pastTripsPath);
 		try {
@@ -112,12 +114,23 @@ public class BixiTrip {
 		System.out.println("Conversion successful.");
 		longLine();
 
+		// create a trip
 		mainTrip = new Trip(start, end);
 		System.out.println("Finding best route from " + start.getName() + " to " + end.getName() + "...");
 		url = mainTrip.getUrl();
 		System.out.println();
 		System.out.println("Your trip will take an estimated " + mainTrip.getDuration() / 60 + " minutes in total.");
 		System.out.println("Here is your Google Maps trip URL: " + url);
+
+		// open URL in default browser
+		if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+			try {
+				Desktop.getDesktop().browse(new URI(url));
+			} catch (Exception f) {
+				f.printStackTrace();
+				return;
+			}
+		}
 	}
 
 }

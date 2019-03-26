@@ -6,7 +6,11 @@ public class SP {
 	private Path[] pathTo;
 	private double[] distTo;
 	private IndexMinPQ<Double> pq;
-
+	
+	private final int PATH_LEN_CUTOFF = 28 * 60; // seconds
+	private final int BIKE_SWITCH_PENALTY = 60; // seconds
+	private final int PATH_COUNT_CUTOFF = 4; // min count for path
+	
 	public SP(Graph G, int s) {
 		pathTo = new Path[G.V()];
 		distTo = new double[G.V()];
@@ -24,8 +28,10 @@ public class SP {
 	private void relax(Graph G, int v) {
 		for (Path p : G.adj(v)) {
 			int w = p.getEndCode();
-			if (distTo[w] > distTo[v] + p.getDuration()) {
-				distTo[w] = distTo[v] + p.getDuration();
+			if (distTo[w] > distTo[v] + p.getDuration() + BIKE_SWITCH_PENALTY && 
+					p.getDuration() < PATH_LEN_CUTOFF &&
+					p.getCount() >= PATH_COUNT_CUTOFF) {
+				distTo[w] = distTo[v] + p.getDuration() + BIKE_SWITCH_PENALTY;
 				pathTo[w] = p;
 				if (pq.contains(w))
 					pq.changeKey(w, distTo[w]);

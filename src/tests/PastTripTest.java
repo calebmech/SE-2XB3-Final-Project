@@ -48,7 +48,7 @@ public class PastTripTest {
 	}
 	
 	@Test
-	void testCompareTo1() {
+	public void testCompareTo1() {
 		assert test1.compareTo(test2) == -1;
 	}
 
