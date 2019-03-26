@@ -20,7 +20,7 @@ public class Parser {
 	/**
 	 * Parse CSV of past trips information
 	 * 
-	 * @param dirPath inputted directory path
+	 * @param dirPath inputed directory path
 	 * @return object containing past trips data
 	 */
 	public static PastTrips parsePastTrips(String dirPath) {
