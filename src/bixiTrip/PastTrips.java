@@ -1,12 +1,13 @@
 package bixiTrip;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
-import bixiTrip.PastTrip;
+import java.util.Locale;
 
 /**
  * Class that contains the access to different trips
  * 
- * @author Matthew Braden
+ * @author Matthew Braden & Jonathan Janzen
  *
  */
 public class PastTrips {
@@ -38,7 +39,8 @@ public class PastTrips {
 
 	/**
 	 * 
-	 * Function that returns a next list of past trips between two stations
+	 * Function that returns the next list of past trips between two shared stations. For example, an
+	 * ArrayList of all past trips that have the same start and end station.
 	 * 
 	 * @return List of past trips
 	 */
@@ -49,12 +51,14 @@ public class PastTrips {
 		}
 		int start = pastTrips.get(i).getStartCode();
 		int end = pastTrips.get(i).getEndCode();
-		while (start == pastTrips.get(i).getStartCode() && 
-			   end == pastTrips.get(i).getEndCode() && i < (pastTrips.size() - 1)) {
-			nextTrips.add(pastTrips.get(i));;
+		while (start == pastTrips.get(i).getStartCode() && end == pastTrips.get(i).getEndCode()
+				&& i < (pastTrips.size() - 1)) {
+			nextTrips.add(pastTrips.get(i));
 			i++;
 		}
 		if (i >= (pastTrips.size() - 1) && nextTrips.size() < 1) {
+//			System.out.println(
+//					NumberFormat.getNumberInstance(Locale.US).format(pastTrips.size()) + " past trips parsed.");
 			return null;
 		}
 		return nextTrips;
@@ -68,5 +72,12 @@ public class PastTrips {
 	public void addTrip(PastTrip trip) {
 		pastTrips.add(trip);
 		isSorted = false;
+	}
+
+	/**
+	 * Function to move the count variable back to the first index.
+	 */
+	public void initialize() {
+		i = 0;
 	}
 }

@@ -47,7 +47,6 @@ public class Stations {
 		if (!isSorted) {
 			sortStations();
 		}
-		// convert to an array to be searched
 		int index = algs.BinarySearch.stationSearch(stations, code);
 		try {
 			return stations.get(index);

@@ -1,7 +1,12 @@
 package bixiTrip;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.net.URI;
+
 /**
- * The main implementation of BixiTrip.
+ * The main implementation of BixiTrip in console. User must give start and end
+ * code as input arguments.
  * 
  * @author Jonathan Janzen
  *
@@ -23,8 +28,9 @@ public class BixiTrip {
 		Station start, end;
 		Integer startCode, endCode;
 		Trip mainTrip;
-		String url;
+		String url, stationPath, pastTripsPath;
 		Paths paths;
+		File stationFile, pastTripsDir;
 
 		// read input codes
 		try {
@@ -50,10 +56,29 @@ public class BixiTrip {
 		System.out.println("Welcome to BixiTrip. Please wait while we import our data...");
 		longLine();
 
+		stationPath = "stations\\stations_2018.csv";
+		stationFile = new File(stationPath);
 		// read data from files
-		stations = Parser.parseStations("stations\\Stations_2018.csv");
+		if (!stationFile.exists()) {
+			System.out.println("Stations file could not be found. Please correct the file path and try again.");
+			return;
+		}
+		stations = Parser.parseStations(stationPath);
 		System.out.println("Stations imported successfully.");
-		pastTrips = Parser.parsePastTrips("pastTrips");
+
+		// import past trips
+		System.out.println("Importing past trips...");
+
+		pastTripsPath = "pastTrips";
+		pastTripsDir = new File(pastTripsPath);
+		try {
+			pastTrips = Parser.parsePastTrips(pastTripsPath);
+		} catch (Exception e) {
+			longLine();
+			System.out.println("An unexpected parsing error occurred. Please correct the directory and try again.");
+			return;
+		}
+		System.out.println();
 		System.out.println("Past trips imported successfully.");
 		System.out.println("Data import successful.");
 		longLine();
@@ -80,16 +105,32 @@ public class BixiTrip {
 		// calculate paths
 		System.out.println("Converting past trips to paths...");
 		paths = Paths.getInstance();
-		paths.importPastTrips();
+		try {
+			paths.importPastTrips();
+		} catch (Exception e) {
+			System.out.println("An error occured during import. Please try again.");
+			return;
+		}
 		System.out.println("Conversion successful.");
 		longLine();
 
+		// create a trip
 		mainTrip = new Trip(start, end);
 		System.out.println("Finding best route from " + start.getName() + " to " + end.getName() + "...");
 		url = mainTrip.getUrl();
 		System.out.println();
-		System.out.println("Your trip will take an estimated " + mainTrip.getDuration() + " minutes in total.");
+		System.out.println("Your trip will take an estimated " + mainTrip.getDuration() / 60 + " minutes in total.");
 		System.out.println("Here is your Google Maps trip URL: " + url);
+
+		// open URL in default browser
+		if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+			try {
+				Desktop.getDesktop().browse(new URI(url));
+			} catch (Exception f) {
+				f.printStackTrace();
+				return;
+			}
+		}
 	}
 
 }

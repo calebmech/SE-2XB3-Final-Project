@@ -20,7 +20,7 @@ public class Parser {
 	/**
 	 * Parse CSV of past trips information
 	 * 
-	 * @param dirPath inputted directory path
+	 * @param dirPath inputed directory path
 	 * @return object containing past trips data
 	 */
 	public static PastTrips parsePastTrips(String dirPath) {
@@ -35,7 +35,9 @@ public class Parser {
 		for (File file : listOfFiles) {
 			if (file.isFile()) {
 				try {
-					System.out.print(file.getName() + ", ");
+//					if (file == listOfFiles[0])
+//						System.out.print("Importing ");
+//					System.out.print(file.getName() + (file == listOfFiles[listOfFiles.length - 1] ? ". " : ", "));
 					Scanner input = new Scanner(file);
 					if (input.hasNextLine())
 						input.nextLine();
@@ -51,8 +53,7 @@ public class Parser {
 						int duration = Integer.parseInt(tempArray[4]);
 
 						// Add a past trip to past trips object
-						pastTrips.addTrip(new PastTrip(startStation, endStation,
-								duration));
+						pastTrips.addTrip(new PastTrip(startStation, endStation, duration));
 
 					}
 					input.close();

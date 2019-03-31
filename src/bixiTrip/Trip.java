@@ -8,7 +8,7 @@ import algs.Stack;
 /**
  * Trip abstract data type that provides directions between two Stations
  * 
- * @author Caleb Mech &amp; Jonathan Janzen
+ * @author Caleb Mech
  *
  */
 
@@ -38,9 +38,9 @@ public class Trip {
 
 		if (!sp.hasPathTo(end.getCode()))
 			throw new IllegalArgumentException("Stations are not connected.");
-		
+
 		Stack<Path> pathSeq = sp.pathTo(end.getCode());
-		
+
 		int i = pathSeq.size();
 		for (Path path : pathSeq) {
 			route.enqueue(stations.getStationByIndex(path.getStartIndex()));
@@ -64,7 +64,7 @@ public class Trip {
 	 * @return Returns number of seconds a trip should take as an int
 	 */
 	public int getDuration() {
-		return (int) Math.round(sp.distTo(stations.getIndex(end.getCode())));
+		return (int) Math.round(sp.distTo(end.getCode()));
 	}
 
 	/**
@@ -77,7 +77,7 @@ public class Trip {
 		url += "&origin=" + route.dequeue().getCoords().toString();
 		url += "&waypoints=";
 		while (route.size() > 1) {
-			url += route.dequeue().getCoords().toString() + "|";
+			url += route.dequeue().getCoords().toString() + "%7C";
 		}
 		url += "&destination=" + route.dequeue().getCoords().toString();
 		url += "&travelmode=bicycling";

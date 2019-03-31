@@ -20,8 +20,8 @@ public class Paths {
 	/**
 	 * Getter for a singleton Paths object
 	 * 
-	 * @return Returns a single instance of the Paths object, whether one
-	 *         already exists or not
+	 * @return Returns a single instance of the Paths object, whether one already
+	 *         exists or not
 	 */
 	public static Paths getInstance() {
 		if (instance == null)
@@ -73,8 +73,7 @@ public class Paths {
 				return;
 
 			for (PastTrip pastTrip : nextPath) {
-				Path path = getPath(pastTrip.getStartCode(),
-						pastTrip.getEndCode());
+				Path path = getPath(pastTrip.getStartCode(), pastTrip.getEndCode());
 
 				if (path == null)
 					addPath(new Path(pastTrip));

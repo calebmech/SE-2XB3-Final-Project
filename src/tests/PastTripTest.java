@@ -1,9 +1,5 @@
 package tests;
 
-import static org.junit.Assert.*;
-
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import bixiTrip.PastTrip;
@@ -19,7 +15,7 @@ public class PastTripTest {
 
 	PastTrip test1 = new PastTrip(500, 1000, 180);
 	PastTrip test2 = new PastTrip(673, 539, 300);
-	PastTrip test3 = new PastTrip(400, 680, 730);
+	PastTrip test3 = new PastTrip(673, 539, 730);
 
 	@Test
 	public void testGetStationStart() {
@@ -50,5 +46,16 @@ public class PastTripTest {
 	public void testGetDuration2() {
 		assert test2.getDuration() == 300;
 	}
+	
+	@Test
+	public void testCompareTo1() {
+		assert test1.compareTo(test2) == -1;
+	}
+
+	@Test
+	public void testCompareTo2() {
+		assert test2.compareTo(test3) == 0;
+	}
+	
 
 }
