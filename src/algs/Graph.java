@@ -29,18 +29,18 @@ public class Graph {
 		adj[p.getStartCode()].add(p);
 		E++;
 	}
-	
+
 	public Path getPath(int startIndex, int endIndex) {
 		int i = BinarySearch.pathSearch(adj[startIndex], endIndex);
-		if (i == - 1)
+		if (i == -1)
 			return null;
 		return adj[startIndex].get(i);
 	}
-	
+
 	public Iterable<Path> adj(int v) {
 		return adj[v];
 	}
-	
+
 	public Iterable<Path> edges() {
 		ArrayList<Path> bag = new ArrayList<Path>();
 		for (int v = 0; v < V; v++)

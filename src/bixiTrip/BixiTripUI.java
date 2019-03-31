@@ -42,6 +42,8 @@ public class BixiTripUI extends JFrame {
 
 	/**
 	 * Launch the application.
+	 * 
+	 * @param args Input arguments
 	 */
 	public static void main(String[] args) {
 		javax.swing.UIManager.put("ProgressBar.selectionBackground", Color.black);

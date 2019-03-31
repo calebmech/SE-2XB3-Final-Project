@@ -14,7 +14,7 @@ public class PastTripsTest {
 	PastTrips pastTrips = new PastTrips();
 	PastTrips newTrips2 = new PastTrips();
 	PastTrips pastTrips2 = new PastTrips();
-	
+
 	@Before
 	public void setUp() throws Exception {
 		pastTrips = new PastTrips();
@@ -34,29 +34,29 @@ public class PastTripsTest {
 	public void testGetNextPathStart() {
 		assert (pastTrips.getNextPath().get(0).getStartCode() == 500);
 	}
-	
+
 	@Test
 	public void testGetNextPathStart2() {
 		pastTrips2.getNextPath();
 		assert (pastTrips2.getNextPath().get(0).getStartCode() == 673);
 	}
-	
+
 	@Test
 	public void testGetNextPathEnd() {
 		assert (pastTrips.getNextPath().get(0).getEndCode() == 1000);
 	}
-	
+
 	@Test
 	public void testGetNextPathEnd2() {
 		pastTrips2.getNextPath();
 		assert (pastTrips2.getNextPath().get(0).getEndCode() == 539);
 	}
-	
+
 	@Test
 	public void testGetNextPathDuration() {
 		assert (pastTrips.getNextPath().get(0).getDuration() == 180);
 	}
-	
+
 	@Test
 	public void testGetNextPathDuration2() {
 		pastTrips2.getNextPath();

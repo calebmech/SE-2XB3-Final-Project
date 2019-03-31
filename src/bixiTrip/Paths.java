@@ -14,7 +14,6 @@ import algs.Graph;
 public class Paths {
 	private Graph graph;
 	private Stations stations;
-
 	private static Paths instance = null;
 
 	/**

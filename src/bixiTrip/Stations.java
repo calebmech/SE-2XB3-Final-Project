@@ -106,7 +106,7 @@ public class Stations {
 	/**
 	 * Function to return the stations stored in the instance of Stations.
 	 * 
-	 * @return Returns ArrayList<Stations> of stations stored.
+	 * @return Returns ArrayList of stations stored.
 	 */
 	public ArrayList<Station> getStations() {
 		// sort list if not sorted
