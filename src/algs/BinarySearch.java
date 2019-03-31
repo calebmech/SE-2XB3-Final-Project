@@ -8,12 +8,12 @@ import bixiTrip.Station;
 public class BinarySearch {
 
 	/**
-	 * Implementation of binary search using code from Sedgewick & Wayne's
+	 * Implementation of binary search using code from Sedgewick and Wayne's
 	 * "Algorithms: Fourth Edition" on page 9. Minor modifications have been made to
 	 * implement searching on Stations based on an integer, in order to match the
 	 * API.
 	 * 
-	 * @param a   An arraylist of type Station to be searched.
+	 * @param a    An arraylist of type Station to be searched.
 	 * @param code An integer code to search for
 	 * @return the mid value in the ArrayList
 	 */
@@ -34,7 +34,7 @@ public class BinarySearch {
 
 	/**
 	 * 
-	 * Implementation of binary search using code from Sedgewick & Wayne's
+	 * Implementation of binary search using code from Sedgewick and Wayne's
 	 * "Algorithms: Fourth Edition" on page 9. Minor modifications have been made to
 	 * implement searching on Stations based on an integer, in order to match the
 	 * API.

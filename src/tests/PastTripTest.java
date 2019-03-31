@@ -46,7 +46,7 @@ public class PastTripTest {
 	public void testGetDuration2() {
 		assert test2.getDuration() == 300;
 	}
-	
+
 	@Test
 	public void testCompareTo1() {
 		assert test1.compareTo(test2) == -1;
@@ -56,6 +56,5 @@ public class PastTripTest {
 	public void testCompareTo2() {
 		assert test2.compareTo(test3) == 0;
 	}
-	
 
 }

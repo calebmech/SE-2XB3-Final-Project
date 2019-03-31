@@ -1,13 +1,11 @@
 package bixiTrip;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Locale;
 
 /**
  * Class that contains the access to different trips
  * 
- * @author Matthew Braden & Jonathan Janzen
+ * @author Matthew Braden and Jonathan Janzen
  *
  */
 public class PastTrips {
@@ -39,8 +37,9 @@ public class PastTrips {
 
 	/**
 	 * 
-	 * Function that returns the next list of past trips between two shared stations. For example, an
-	 * ArrayList of all past trips that have the same start and end station.
+	 * Function that returns the next list of past trips between two shared
+	 * stations. For example, an ArrayList of all past trips that have the same
+	 * start and end station.
 	 * 
 	 * @return List of past trips
 	 */

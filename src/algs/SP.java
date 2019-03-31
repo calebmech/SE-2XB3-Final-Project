@@ -14,16 +14,16 @@ public class SP {
 	private Path[] pathTo;
 	private double[] distTo;
 	private IndexMinPQ<Double> pq;
-	
+
 	private final int PATH_LEN_CUTOFF = 28 * 60; // seconds
 	private final int BIKE_SWITCH_PENALTY = 60; // seconds
 	private final int PATH_COUNT_CUTOFF = 4; // min count for path
-	
+
 	/**
 	 * Constructor for shortest path algorithm
 	 * 
 	 * @param G Input graph
-	 * @param s	Node to start algorithm at
+	 * @param s Node to start algorithm at
 	 */
 	public SP(Graph G, int s) {
 		pathTo = new Path[G.V()];
@@ -37,7 +37,7 @@ public class SP {
 		distTo[s] = 0.0;
 
 		pq.insert(s, 0.0);
-		// Keep relaxing using the edges coming out of the 
+		// Keep relaxing using the edges coming out of the
 		// closest node (that hasn't had all edges relaxed)
 		// until no more relaxing can be done (shortest path
 		// tree has been obtained)
@@ -56,9 +56,9 @@ public class SP {
 		for (Path p : G.adj(v)) {
 			// Get key of destination node
 			int w = p.getEndCode();
-				// Check if route would be faster than current best
-			if (distTo[w] > distTo[v] + p.getDuration() + BIKE_SWITCH_PENALTY && 
-					// Make sure leg of trip isn't too long
+			// Check if route would be faster than current best
+			if (distTo[w] > distTo[v] + p.getDuration() + BIKE_SWITCH_PENALTY &&
+			// Make sure leg of trip isn't too long
 					p.getDuration() < PATH_LEN_CUTOFF &&
 					// Make sure enough people have taken this path before
 					// to ensure confidence in data
@@ -66,7 +66,7 @@ public class SP {
 				// Update the route with the new faster path
 				distTo[w] = distTo[v] + p.getDuration() + BIKE_SWITCH_PENALTY;
 				pathTo[w] = p;
-				
+
 				// Add / update selected node in priority queue
 				if (pq.contains(w))
 					pq.changeKey(w, distTo[w]);
@@ -87,8 +87,8 @@ public class SP {
 	}
 
 	/**
-	 * Check if a route more efficient than the
-	 * default "unreachable" value has been found
+	 * Check if a route more efficient than the default "unreachable" value has been
+	 * found
 	 * 
 	 * @param v Check if there is a path to node
 	 * @return Whether a path to node exists

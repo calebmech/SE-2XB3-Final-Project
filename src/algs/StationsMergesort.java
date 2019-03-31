@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import bixiTrip.Station;
 
 /**
- * Class containing code for mergesort. Code taken from Sedgewick & Wayne's
+ * Class containing code for mergesort. Code taken from Sedgewick and Wayne's
  * "Algorithms: Fourth Edition". Each function has been cited individually from
  * the textbook.
  * 
@@ -55,11 +55,11 @@ public class StationsMergesort {
 	}
 
 	/**
-	 * Sorting function intial call. Code based from Sedgewick & Wayne's
+	 * Sorting function intial call. Code based from Sedgewick and Wayne's
 	 * "Algorithms: Fourth Edition" on page 278, but modified to fit the Station
 	 * datatype.
 	 * 
-	 * @param a An ArrayList of type <Station>.
+	 * @param a An ArrayList of type Station.
 	 */
 	public static void sort(ArrayList<Station> a) {
 		int n = a.size();

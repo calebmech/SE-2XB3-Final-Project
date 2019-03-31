@@ -54,7 +54,7 @@ public class Path extends PastTrip {
 	public int getEndIndex() {
 		return stations.getIndex(endCode);
 	}
-	
+
 	/**
 	 * Getter for number of PastTrips used to create Path.
 	 * 
