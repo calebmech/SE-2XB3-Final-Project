@@ -14,7 +14,7 @@ public class BinarySearch {
 	 * API.
 	 * 
 	 * @param a   An arraylist of type Station to be searched.
-	 * @param key An integer code to search for
+	 * @param code An integer code to search for
 	 * @return the mid value in the ArrayList
 	 */
 	public static int stationSearch(ArrayList<Station> a, Integer code) {
