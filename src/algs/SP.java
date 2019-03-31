@@ -15,8 +15,9 @@ public class SP {
 	private double[] distTo;
 	private IndexMinPQ<Double> pq;
 	
-	private final int PATH_LEN_CUTOFF = 28 * 60; // seconds
-	private final int BIKE_SWITCH_PENALTY = 60; // seconds
+	private final int PATH_LEN_MIN = 10 * 60; // seconds
+	private final int PATH_LEN_MAX = 28 * 60; // seconds
+	private final int BIKE_SWITCH_PENALTY = 150; // seconds
 	private final int PATH_COUNT_CUTOFF = 4; // min count for path
 	
 	/**
@@ -58,8 +59,9 @@ public class SP {
 			int w = p.getEndCode();
 				// Check if route would be faster than current best
 			if (distTo[w] > distTo[v] + p.getDuration() + BIKE_SWITCH_PENALTY && 
+					(p.getDuration() > PATH_LEN_MIN || !hasPathTo(w) || pathTo(w).size() == 1) &&
 					// Make sure leg of trip isn't too long
-					p.getDuration() < PATH_LEN_CUTOFF &&
+					p.getDuration() < PATH_LEN_MAX &&
 					// Make sure enough people have taken this path before
 					// to ensure confidence in data
 					p.getCount() >= PATH_COUNT_CUTOFF) {
