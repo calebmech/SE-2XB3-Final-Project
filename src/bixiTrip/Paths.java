@@ -34,7 +34,7 @@ public class Paths {
 	 */
 	private Paths() {
 		stations = Stations.getInstance();
-		this.graph = new Graph(stations.size());
+		this.graph = new Graph();
 	}
 
 	/**
