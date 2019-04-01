@@ -1,12 +1,14 @@
 package tests;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import bixiTrip.Coord;
 import bixiTrip.PastTrip;
+import bixiTrip.PastTrips;
 import bixiTrip.Path;
 import bixiTrip.Paths;
 import bixiTrip.Station;
@@ -15,6 +17,7 @@ import bixiTrip.Stations;
 public class PathsTest {
 	private Stations stations;
 	private Coord coord = new Coord(0, 0);
+	private Paths paths;
 
 	public PathsTest() {
 		stations = Stations.getInstance();
@@ -23,7 +26,7 @@ public class PathsTest {
 			stations.addStation(station);
 		}
 
-		Paths paths = Paths.getInstance();
+		paths = Paths.getInstance();
 		paths.addPath(new Path(new PastTrip(1, 2, 5)));
 		paths.addPath(new Path(new PastTrip(2, 3, 5)));
 		paths.addPath(new Path(new PastTrip(1, 3, 1)));
@@ -38,27 +41,36 @@ public class PathsTest {
 
 	@Test
 	public void testGetInstance() {
-		fail("Not yet implemented");
+		assertTrue(paths instanceof Paths);
 	}
 
 	@Test
 	public void testAddPath() {
-		fail("Not yet implemented");
+		paths.addPath(new Path(new PastTrip(6, 7, 67)));
+		assertEquals(67, paths.getPath(6, 7).getDuration());
 	}
-
+	
 	@Test
 	public void testGetPath() {
-		fail("Not yet implemented");
+		assertEquals(3, paths.getPath(4, 5).getDuration());
 	}
 
 	@Test
 	public void testImportPastTrips() {
-		fail("Not yet implemented");
+		PastTrips pastTrips = PastTrips.getInstance();
+		pastTrips.addTrip(new PastTrip(10, 11, 25));
+		pastTrips.addTrip(new PastTrip(10, 11, 75));
+		pastTrips.addTrip(new PastTrip(12, 13, 20));
+		
+		paths.importPastTrips();
+		
+		assertEquals(50, paths.getPath(10, 11).getDuration());
+		assertEquals(20, paths.getPath(12, 13).getDuration());
 	}
 
 	@Test
 	public void testGetGraph() {
-		fail("Not yet implemented");
+		assertEquals(10003, paths.getGraph().V());
 	}
 
 }
