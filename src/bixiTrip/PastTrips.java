@@ -48,18 +48,23 @@ public class PastTrips {
 		if (!isSorted) {
 			sortPastTrips();
 		}
-		int start = pastTrips.get(i).getStartCode();
-		int end = pastTrips.get(i).getEndCode();
-		while (start == pastTrips.get(i).getStartCode() && end == pastTrips.get(i).getEndCode()
-				&& i < (pastTrips.size() - 1)) {
-			nextTrips.add(pastTrips.get(i));
-			i++;
-		}
-		if (i >= (pastTrips.size() - 1) && nextTrips.size() < 1) {
+
+		if (i >= pastTrips.size() && nextTrips.size() < 1) {
 //			System.out.println(
 //					NumberFormat.getNumberInstance(Locale.US).format(pastTrips.size()) + " past trips parsed.");
 			return null;
 		}
+		
+		int start = pastTrips.get(i).getStartCode();
+		int end = pastTrips.get(i).getEndCode();
+		while (i < pastTrips.size() &&
+			   start == pastTrips.get(i).getStartCode() &&
+			   end == pastTrips.get(i).getEndCode()) 
+		{
+			nextTrips.add(pastTrips.get(i));
+			i++;
+		}
+	
 		return nextTrips;
 	}
 
