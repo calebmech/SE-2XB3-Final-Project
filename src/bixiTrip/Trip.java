@@ -13,11 +13,11 @@ import algs.Stack;
  */
 
 public class Trip {
-	private Station start;
-	private Station end;
-	private Queue<Station> route;
-	private Stations stations;
-	private SP sp;
+	private final Station start;
+	private final Station end;
+	private final Queue<Station> route;
+	private final Stations stations;
+	private final SP sp;
 
 	/**
 	 * Constructor for Trip object

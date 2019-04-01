@@ -12,7 +12,7 @@ public class PastTrips {
 
 	private static PastTrips instance = null;
 	private boolean isSorted = true;
-	private ArrayList<PastTrip> pastTrips = new ArrayList<PastTrip>();
+	private final ArrayList<PastTrip> pastTrips = new ArrayList<PastTrip>();
 	private int i = 0;
 
 	/**

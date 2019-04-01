@@ -15,7 +15,7 @@ public class Stations {
 
 	private static Stations instance = null;
 	private boolean isSorted = true;
-	private ArrayList<Station> stations = new ArrayList<Station>();
+	private final ArrayList<Station> stations = new ArrayList<Station>();
 
 	/**
 	 * Constructor for a singleton Stations() object.

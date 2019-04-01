@@ -7,9 +7,9 @@ package bixiTrip;
  * @author Matthew Braden
  */
 public class PastTrip implements Comparable<PastTrip> {
-	protected int startCode;
-	protected int endCode;
-	private int duration;
+	protected final int startCode;
+	protected final int endCode;
+	private final int duration;
 
 	/**
 	 * Function that stores the past trips results

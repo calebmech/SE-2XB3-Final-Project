@@ -10,7 +10,7 @@ package bixiTrip;
 public class Path extends PastTrip {
 	private float duration;
 	private int count;
-	private Stations stations;
+	private final Stations stations;
 
 	/**
 	 * Constructor for a new Path object.
