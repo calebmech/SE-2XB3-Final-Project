@@ -1,7 +1,8 @@
 package bixiTrip;
 
 /** 
- * The main UI for BixiTrip.
+ * BixiTrip main with user interface. Works the same as the BixiTrip class, but does not require
+ * input arguments
  * 
  * @author Jonathan Janzen
  */

@@ -6,7 +6,7 @@ import java.net.URI;
 
 /**
  * The main implementation of BixiTrip in console. User must give start and end
- * code as input arguments.
+ * code as input arguments. Example: 6323 6079
  * 
  * @author Jonathan Janzen
  *
