@@ -122,7 +122,7 @@ public class BixiTripUI extends JFrame {
 				// check that two stations have been selected
 				if (startStationComboBox.getSelectedItem() == "" || endStationComboBox.getSelectedItem() == "") {
 					statusField.setForeground(error);
-					statusField.setText("One or more selections is incorrect. Please select a start and end station.");
+					statusField.setText("One or more selections are incorrect. Please select a start and end station.");
 					return;
 				}
 
