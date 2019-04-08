@@ -5,7 +5,7 @@ import java.io.File;
 import java.net.URI;
 
 /**
- * The main implementation of BixiTrip in console. User must give start and end
+ * The main implementation of BixiTrip in console, version 1.1.1. User must give start and end
  * code as input arguments. Example: 6323 6079
  * 
  * @author Jonathan Janzen

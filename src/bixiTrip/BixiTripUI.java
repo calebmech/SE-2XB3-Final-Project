@@ -1,7 +1,7 @@
 package bixiTrip;
 
 /** 
- * BixiTrip main with user interface. Works the same as the BixiTrip class, but does not require
+ * BixiTrip main with user interface, version 1.1.1. Works the same as the BixiTrip class, but does not require
  * input arguments
  * 
  * @author Jonathan Janzen
