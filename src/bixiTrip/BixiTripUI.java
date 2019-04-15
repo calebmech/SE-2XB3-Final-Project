@@ -26,6 +26,7 @@ import javax.swing.JTextField;
 import javax.swing.JProgressBar;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
@@ -184,7 +185,11 @@ public class BixiTripUI extends JFrame {
 			statusField.setText("Stations file could not be found. Please correct the file path and try again.");
 			return;
 		}
-		stations = Parser.parseStations(stationPath);
+		try {
+			stations = Parser.parseStations(stationPath);
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		}
 		statusField.setText("Welcome to BixiTrip! Please wait while we import our data.");
 
 		// populate combobox

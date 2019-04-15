@@ -2,6 +2,7 @@ package bixiTrip;
 
 import java.awt.Desktop;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URI;
 
 /**
@@ -63,7 +64,11 @@ public class BixiTrip {
 			System.out.println("Stations file could not be found. Please correct the file path and try again.");
 			return;
 		}
-		stations = Parser.parseStations(stationPath);
+		try {
+			stations = Parser.parseStations(stationPath);
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		}
 		System.out.println("Stations imported successfully.");
 
 		// import past trips

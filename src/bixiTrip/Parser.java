@@ -22,8 +22,9 @@ public class Parser {
 	 * 
 	 * @param dirPath inputed directory path
 	 * @return object containing past trips data
+	 * @throws FileNotFoundException 
 	 */
-	public static PastTrips parsePastTrips(String dirPath) {
+	public static PastTrips parsePastTrips(String dirPath) throws FileNotFoundException {
 
 		// Get instance/any previous instance of pastTrips object
 		PastTrips pastTrips = PastTrips.getInstance();
@@ -31,7 +32,8 @@ public class Parser {
 		// List of files within provided directory path
 		File folder = new File(dirPath);
 		File[] listOfFiles = folder.listFiles();
-
+		if (listOfFiles.length == 0)
+			throw new FileNotFoundException("Empty folder.");
 		for (File file : listOfFiles) {
 			if (file.isFile()) {
 				try {
@@ -61,7 +63,7 @@ public class Parser {
 
 				// Catch block
 				catch (FileNotFoundException e) {
-					e.printStackTrace();
+					throw e;
 				}
 			}
 		}
@@ -74,8 +76,9 @@ public class Parser {
 	 * 
 	 * @param filePath inputted file path
 	 * @return object containing station data
+	 * @throws FileNotFoundException 
 	 */
-	public static Stations parseStations(String filePath) {
+	public static Stations parseStations(String filePath) throws FileNotFoundException {
 
 		// Get instance/any previous instance of stations object
 		Stations stations = Stations.getInstance();
@@ -108,7 +111,7 @@ public class Parser {
 
 		// Catch block
 		catch (FileNotFoundException e) {
-			e.printStackTrace();
+			throw e;
 		}
 		return stations;
 	}
