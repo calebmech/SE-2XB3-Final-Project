@@ -22,7 +22,7 @@ public class Parser {
 	 * 
 	 * @param dirPath inputed directory path
 	 * @return object containing past trips data
-	 * @throws FileNotFoundException 
+	 * @throws FileNotFoundException Throws exception if file does not exist.
 	 */
 	public static PastTrips parsePastTrips(String dirPath) throws FileNotFoundException {
 
@@ -76,7 +76,7 @@ public class Parser {
 	 * 
 	 * @param filePath inputted file path
 	 * @return object containing station data
-	 * @throws FileNotFoundException 
+	 * @throws FileNotFoundException Throws exception if file does not exist.
 	 */
 	public static Stations parseStations(String filePath) throws FileNotFoundException {
 
