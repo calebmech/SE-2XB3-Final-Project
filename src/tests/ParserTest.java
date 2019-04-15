@@ -18,6 +18,10 @@ public class ParserTest {
 	
 	Stations stations = new Stations();
 	PastTrips pastrips = new PastTrips();
+	PastTrip test1 = new PastTrip(500, 1000, 180);
+	PastTrip test2 = new PastTrip(673, 539, 300);
+	PastTrip test3 = new PastTrip(673, 539, 730);
+	
 	@Before
 	public void setUp() throws Exception {
 		Station station1 = new Station(43, "Station 1", new Coord(4.5843, 9.2940));
@@ -26,15 +30,6 @@ public class ParserTest {
 		stations.addStation(station1);
 		stations.addStation(station2);
 		stations.addStation(station3);
-		
-		PastTrip test1 = new PastTrip(500, 1000, 180);
-		PastTrip test2 = new PastTrip(673, 539, 300);
-		PastTrip test3 = new PastTrip(673, 539, 730);
-		//pastrips.addTrip(test1);
-		//pastrips.addTrip(test2);
-		//pastrips.addTrip(test3);
-		
-		
 	}
 
 	
@@ -46,11 +41,8 @@ public class ParserTest {
 	
 	@Test
 	public void testbasePastTrips() {
-		//PastTrips testbasetrips = new PastTrips();
 		pastrips = Parser.parsePastTrips("src\\tests\\PastTripsTesting");
-		//System.out.println(testbasetrips.getNextPath().get(1).getStartCode());
-		//System.out.println(pastrips.getNextPath().get(1).getStartCode());
-		//assert testbasetrips.getNextPath().get(1).getStartCode() == pastrips.getNextPath().get(1).getStartCode();
+		assert (test1.getStartCode() == pastrips.getNextPath().get(0).getStartCode());
 
 	}
 }
