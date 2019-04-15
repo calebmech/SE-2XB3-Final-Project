@@ -30,9 +30,9 @@ public class ParserTest {
 		PastTrip test1 = new PastTrip(500, 1000, 180);
 		PastTrip test2 = new PastTrip(673, 539, 300);
 		PastTrip test3 = new PastTrip(673, 539, 730);
-		pastrips.addTrip(test1);
-		pastrips.addTrip(test2);
-		pastrips.addTrip(test3);
+		//pastrips.addTrip(test1);
+		//pastrips.addTrip(test2);
+		//pastrips.addTrip(test3);
 		
 		
 	}
@@ -46,10 +46,10 @@ public class ParserTest {
 	
 	@Test
 	public void testbasePastTrips() {
-		PastTrips testbasetrips = new PastTrips();
-		testbasetrips = Parser.parsePastTrips("src\\tests\\PastTripsTest.csv");
-		System.out.println(testbasetrips.getNextPath().get(1).getStartCode());
-		System.out.println(pastrips.getNextPath().get(1).getStartCode());
+		//PastTrips testbasetrips = new PastTrips();
+		pastrips = Parser.parsePastTrips("src\\tests\\PastTripsTesting");
+		//System.out.println(testbasetrips.getNextPath().get(1).getStartCode());
+		//System.out.println(pastrips.getNextPath().get(1).getStartCode());
 		//assert testbasetrips.getNextPath().get(1).getStartCode() == pastrips.getNextPath().get(1).getStartCode();
 
 	}
