@@ -2,6 +2,9 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,6 +21,7 @@ public class ParserTest {
 	
 	Stations stations = new Stations();
 	PastTrips pastrips = new PastTrips();
+	PastTrips badpastrips = new PastTrips();
 	PastTrip test1 = new PastTrip(500, 1000, 180);
 	PastTrip test2 = new PastTrip(673, 539, 300);
 	PastTrip test3 = new PastTrip(673, 539, 730);
@@ -35,14 +39,35 @@ public class ParserTest {
 	
 	@Test
 	public void testbaseStations() {
-		Stations testbase = Parser.parseStations("src\\tests\\StationTest.csv");
+		Stations testbase = Parser.parseStations("src/tests/StationTest.csv");
 		assert testbase.getStationByCode(43).getCode() == stations.getStationByCode(43).getCode();
 	}
 	
 	@Test
 	public void testbasePastTrips() {
-		pastrips = Parser.parsePastTrips("src\\tests\\PastTripsTesting");
+		pastrips = Parser.parsePastTrips("src/tests/PastTripsTesting");
 		assert (test1.getStartCode() == pastrips.getNextPath().get(0).getStartCode());
 
 	}
+	@Test(expected = NullPointerException.class)
+	public void testbaddirPath()  {
+
+		  Parser.parsePastTrips("src/tests/badPath");
+		
+	}
+	
+	@Test(expected = NullPointerException.class)
+	public void testbadfilePath()  {
+
+		  Parser.parseStations("src/tests/badPath.csv");
+		
+	}
+	
+	@Test(expected = FileNotFoundException.class)
+	public void testemptyDir() {
+		Parser.parsePastTrips("src/tests/testdirPath");
+	}
+	
+	
+	
 }
