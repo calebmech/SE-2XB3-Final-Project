@@ -54,7 +54,7 @@ public class PastTrip implements Comparable<PastTrip> {
 	/**
 	 * Function that compares different trips
 	 * 
-	 * @param trip A seperate trip
+	 * @param trip A separate trip
 	 * @return A boolean of the compared trips
 	 */
 	@Override
