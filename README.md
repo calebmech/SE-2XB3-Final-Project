@@ -1,5 +1,10 @@
 BixiTrip
 ========
+
+Video Demo
+----------
+https://drive.google.com/a/mcmaster.ca/file/d/1dQSjcRRqspCUT3arvEIrEVwDoi_bXPH4/view?usp=sharing
+
 Instructions on usage and installation
 --------------------------------------
 1. Open ```SE-2XB3-Final-Project``` folder in Eclipse and open the project ```Group01_FinalProject```
